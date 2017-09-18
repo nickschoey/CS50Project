@@ -1,0 +1,550 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <title></title>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
+  <link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet'>
+
+<style type="text/css">
+.historyIcon {
+    border-radius: 10px;
+    width: 30px;
+    height: 30px;
+    background-color: white;
+}
+.check {
+    width: 20px;
+    height: 20px;
+}
+
+body {
+    font-family: 'Roboto';
+    font-size: 16px;
+}
+    
+</style>
+</head>
+
+
+
+<body>
+<div class="container" style="background-color: black ;color:#fff; height:75px;">
+  <h1>Sports Shop rental</h1>
+</div>
+
+<div class="container" style="height: 25px"></div>
+
+<div class="container">
+    <p>Dear {{user.fullname}},<br>
+     Thank you for your reservation with SPORTS SHOP.<br>
+     We are glad to <b>confirm</b> your reservation starting on <b>{{resa.datestart.strftime('%A %d %B, %Y')}}</b>.<br></p>
+     
+
+     
+     <h4>RESERVATION SUMMARY</h4>
+     <ul>
+         <li><b>Contact:</b> {{user.fullname}} ({{user.email}})</li>
+         <li><b>Telephone:</b> {{user.telephone}}</li>
+         <li><b>Reserving for </b> {{resa.days}} days. From {{resa.datestart.strftime('%A %d %B, %Y')}} to {{resa.dateend.strftime('%A %d %B, %Y')}}.</li>
+         <li><b>Additional comments provided:</b><i> "{{resa.comment}}".</i>
+         <li><b>Total price:</b> {{resa.total}} Euros.
+    </ul>
+    
+</div>
+
+
+
+<div class="container">
+
+<table class="table table-striped table-responsive ">
+    <thead>
+        <tr role="row">
+            <th> <img class="historyIcon" data-toggle="tooltip" title="Name" src="{{ url_for('static', filename='images/icons/user.png', _external=True) }}" alt="Name"></th>
+            <th> <img class="historyIcon" data-toggle="tooltip" title="Mont-Blanc Pack" src="{{ url_for('static', filename='images/icons/mountain.png', _external=True) }}" alt="Mont-Blanc Pack"></th>
+            <th> <img class="historyIcon" data-toggle="tooltip" title="Les Gaillands Pack" src="{{ url_for('static', filename='images/icons/climber.png', _external=True) }}" alt="Les Gaillands Pack"></th>
+            <th> <img class="historyIcon" data-toggle="tooltip" title="Les Evettes Pack" src="{{ url_for('static', filename='images/icons/via ferrata.png', _external=True) }}" alt="Les Evettes Pack"></th>
+            <th> <img class="historyIcon" data-toggle="tooltip" title="Mountaineering Boots" src="{{ url_for('static', filename='images/icons/boots.png', _external=True) }}" alt="Mountaineering Boots"></th>
+            <th> <img class="historyIcon" data-toggle="tooltip" title="Mountaineering Boots size" src="{{ url_for('static', filename='images/icons/size.png', _external=True) }}" alt="Mountaineering Boots size"></th>
+            <th> <img class="historyIcon" data-toggle="tooltip" title="Crampons" src="{{ url_for('static', filename='images/icons/crampons.png', _external=True) }}" alt="Crampons"></th>
+            <th> <img class="historyIcon" data-toggle="tooltip" title="Ice-Axe" src="{{ url_for('static', filename='images/icons/piolet.png', _external=True) }}" alt="Piolet"></th>
+            <th> <img class="historyIcon" data-toggle="tooltip" title="Helmet" src="{{ url_for('static', filename='images/icons/helmet.png', _external=True) }}" alt="Helmet"></th>
+            <th> <img class="historyIcon" data-toggle="tooltip" title="Harness" src="{{ url_for('static', filename='images/icons/harness.png', _external=True) }}" alt="Harness"></th>
+            <th> <img class="historyIcon" data-toggle="tooltip" title="Gaiters" src="{{ url_for('static', filename='images/icons/gaiters.png', _external=True) }}" alt="Gaiters"></th>
+            <th> <img class="historyIcon" data-toggle="tooltip" title="Poles" src="{{ url_for('static', filename='images/icons/poles.png', _external=True) }}" alt="Poles"></th>
+            <th> <img class="historyIcon" data-toggle="tooltip" title="Ice-Climbing Axes" src="{{ url_for('static', filename='images/icons/icePiolet.png', _external=True) }}" alt="Ice Climbing Tools"></th>
+            <th> <img class="historyIcon" data-toggle="tooltip" title="Ice-Climbing Crampons" src="{{ url_for('static', filename='images/icons/crampons.png', _external=True) }}" alt="Ice Climbing Crampons"></th>
+            <th> <img class="historyIcon" data-toggle="tooltip" title="Alpinism Backpack" src="{{ url_for('static', filename='images/icons/backpack.png', _external=True) }}" alt="Backpack"></th>
+            <th> <img class="historyIcon" data-toggle="tooltip" title="Climbing Shoes" src="{{ url_for('static', filename='images/icons/cShoes.png', _external=True) }}" alt="Climbing Shoes"></th>
+            <th> <img class="historyIcon" data-toggle="tooltip" title="Kid's Climbing Shoes" src="{{ url_for('static', filename='images/icons/cShoes.png', _external=True) }}" alt="Kids Climbing Shoes"></th>
+            <th> <img class="historyIcon" data-toggle="tooltip" title="Shock Absorber" src="{{ url_for('static', filename='images/icons/shock.png', _external=True) }}" alt="Via Ferrata Shock Absorber"></th>
+            <th> <img class="historyIcon" data-toggle="tooltip" title="Crashpad" src="{{ url_for('static', filename='images/icons/crashpad.jpg', _external=True) }}" alt="Crashpad"></th>
+            <th> <img class="historyIcon" data-toggle="tooltip" title="Slackline" src="{{ url_for('static', filename='images/icons/slackline.png', _external=True) }}" alt="Slackline"></th>
+            <th> <img class="historyIcon" data-toggle="tooltip" title="Hiking Shoes" src="{{ url_for('static', filename='images/icons/hikingshoes.png', _external=True) }}" alt="Hiking Shoes"></th>
+            <th> <img class="historyIcon" data-toggle="tooltip" title="Stroller" src="{{ url_for('static', filename='images/icons/stroller.png', _external=True) }}" alt="Stroller"></th>
+            <th> <img class="historyIcon" data-toggle="tooltip" title="Baby Carrier" src="{{ url_for('static', filename='images/icons/babybag.png', _external=True) }}" alt="Baby Carrier"></th>
+            <th> <img class="historyIcon" data-toggle="tooltip" title="Total" src="{{ url_for('static', filename='images/icons/euro.png', _external=True) }}" alt="Total"></th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for r in resauni %}
+        <tr>
+            <td><b>{{r.name}}</b></td>
+
+            {% if r.mbPack %}
+                <td style="background-color: rgba(34,155,101,0.5)"><img class="check" src="{{ url_for('static', filename='images/icons/check.png', _external=True) }}"></td>
+                <td></td>
+                <td></td>
+                <td style="background-color: rgba(34,155,101,0.5)"><img class="check" src="{{ url_for('static', filename='images/icons/check.png', _external=True) }}"></td>
+                <td style="background-color: rgba(34,155,101,0.5)">{{r.alpBootSize}}</td>
+                <td style="background-color: rgba(34,155,101,0.5)"><img class="check" src="{{ url_for('static', filename='images/icons/check.png', _external=True) }}"></td>
+                <td style="background-color: rgba(34,155,101,0.5)"><img class="check" src="{{ url_for('static', filename='images/icons/check.png', _external=True) }}"></td>
+                <td style="background-color: rgba(34,155,101,0.5)"><img class="check" src="{{ url_for('static', filename='images/icons/check.png', _external=True) }}"></td>
+                <td style="background-color: rgba(34,155,101,0.5)"><img class="check" src="{{ url_for('static', filename='images/icons/check.png', _external=True) }}"></td>
+
+                {% if r.gaiters %}
+                <td><img class="check" src="{{ url_for('static', filename='images/icons/check.png', _external=True) }}"></i></td>
+                {% else %}
+                <td></td>
+                {% endif %}
+
+                {% if r.poles %}
+                <td><img class="check" src="{{ url_for('static', filename='images/icons/check.png', _external=True) }}"></td>
+                {% else %}
+                <td></td>
+                {% endif %}
+
+                {% if r.techIceAxes %}
+                <td><img class="check" src="{{ url_for('static', filename='images/icons/check.png', _external=True) }}"></td>
+                {% else %}
+                <td></td>
+                {% endif %}
+
+                {% if r.iceCrampon %}
+                <td><img class="check" src="{{ url_for('static', filename='images/icons/check.png', _external=True) }}"></td>
+                {% else %}
+                <td></td>
+                {% endif %}
+
+                {% if r.backpack %}
+                <td><img class="check" src="{{ url_for('static', filename='images/icons/check.png', _external=True) }}"></td>
+                {% else %}
+                <td></td>
+                {% endif %}
+
+                {% if r.climbingShoes %}
+                <td><img class="check" src="{{ url_for('static', filename='images/icons/check.png', _external=True) }}"></td>
+                {% else %}
+                <td></td>
+                {% endif %}
+
+                {% if r.kidClimbingShoes %}
+                <td><img class="check" src="{{ url_for('static', filename='images/icons/check.png', _external=True) }}"></td>
+                {% else %}
+                <td></td>
+                {% endif %}
+
+                {% if r.viaFerrataShock %}
+                <td><img class="check" src="{{ url_for('static', filename='images/icons/check.png', _external=True) }}"></td>
+                {% else %}
+                <td></td>
+                {% endif %}
+
+                {% if r.crashpad %}
+                <td><img class="check" src="{{ url_for('static', filename='images/icons/check.png', _external=True) }}"></td>
+                {% else %}
+                <td></td>
+                {% endif %}
+
+                {% if r.slackline %}
+                <td><img class="check" src="{{ url_for('static', filename='images/icons/check.png', _external=True) }}"></td>
+                {% else %}
+                <td></td>
+                {% endif %}
+
+                {% if r.hikingShoes %}
+                <td><img class="check" src="{{ url_for('static', filename='images/icons/check.png', _external=True) }}"></td>
+                {% else %}
+                <td></td>
+                {% endif %}
+
+                {% if r.babyCarrier %}
+                <td><img class="check" src="{{ url_for('static', filename='images/icons/check.png', _external=True) }}"></td>
+                {% else %}
+                <td></td>
+                {% endif %}
+
+                {% if r.stroller %}
+                <td><img class="check" src="{{ url_for('static', filename='images/icons/check.png', _external=True) }}"></td>
+                {% else %}
+                <td></td>
+                {% endif %}
+
+
+                <td style="float: right"><b>{{r.price}}€</b></td>
+
+            {% elif r.gaillandKit %}
+                <td></td>
+                <td style="background-color: rgba(34,155,101,0.5)"><img class="check" src="{{ url_for('static', filename='images/icons/check.png', _external=True) }}"></td>
+                <td></td>
+
+                {% if r.alpBoots %}
+                <td><img class="check" src="{{ url_for('static', filename='images/icons/check.png', _external=True) }}"></td>
+                <td>{{r.alpBootSize}}</td>
+                {% else %}
+                <td></td>
+                <td></td>
+                {% endif %}
+
+                {% if r.crampons %}
+                <td><img class="check" src="{{ url_for('static', filename='images/icons/check.png', _external=True) }}"></td>
+                {% else %}
+                <td></td>
+                {% endif %}
+                
+                {% if r.iceAxe %}
+                <td><img class="check" src="{{ url_for('static', filename='images/icons/check.png', _external=True) }}"></td>
+                {% else %}
+                <td></td>
+                {% endif %}
+
+                <td style="background-color: rgba(34,155,101,0.5)"><img class="check" src="{{ url_for('static', filename='images/icons/check.png', _external=True) }}"></td>
+                <td style="background-color: rgba(34,155,101,0.5)"><img class="check" src="{{ url_for('static', filename='images/icons/check.png', _external=True) }}"></td>
+
+                {% if r.gaiters %}
+                <td><img class="check" src="{{ url_for('static', filename='images/icons/check.png', _external=True) }}"></td>
+                {% else %}
+                <td></td>
+                {% endif %}
+                
+                {% if r.poles %}
+                <td><img class="check" src="{{ url_for('static', filename='images/icons/check.png', _external=True) }}"></td>
+                {% else %}
+                <td></td>
+                {% endif %}
+                
+                {% if r.techIceAxes %}
+                <td><img class="check" src="{{ url_for('static', filename='images/icons/check.png', _external=True) }}"></td>
+                {% else %}
+                <td></td>
+                {% endif %}
+
+                {% if r.iceCrampon %}
+                <td><img class="check" src="{{ url_for('static', filename='images/icons/check.png', _external=True) }}"></td>
+                {% else %}
+                <td></td>
+                {% endif %}
+
+                {% if r.backpack %}
+                <td><img class="check" src="{{ url_for('static', filename='images/icons/check.png', _external=True) }}"></td>
+                {% else %}
+                <td></td>
+                {% endif %}
+
+                {% if r.climbingShoes %}
+                <td><img class="check" src="{{ url_for('static', filename='images/icons/check.png', _external=True) }}"></td>
+                {% else %}
+                <td></td>
+                {% endif %}
+
+                <td style="background-color: rgba(34,155,101,0.5)"><img class="check" src="{{ url_for('static', filename='images/icons/check.png', _external=True) }}"></td>
+
+                {% if r.viaFerrataShock %}
+                <td><img class="check" src="{{ url_for('static', filename='images/icons/check.png', _external=True) }}"></td>
+                {% else %}
+                <td></td>
+                {% endif %}
+
+                {% if r.crashpad %}
+                <td><img class="check" src="{{ url_for('static', filename='images/icons/check.png', _external=True) }}"></td>
+                {% else %}
+                <td></td>
+                {% endif %}
+
+                {% if r.slackline %}
+                <td><img class="check" src="{{ url_for('static', filename='images/icons/check.png', _external=True) }}"></td>
+                {% else %}
+                <td></td>
+                {% endif %}
+
+                {% if r.hikingShoes %}
+                <td><img class="check" src="{{ url_for('static', filename='images/icons/check.png', _external=True) }}"></td>
+                {% else %}
+                <td></td>
+                {% endif %}
+
+                {% if r.babyCarrier %}
+                <td><img class="check" src="{{ url_for('static', filename='images/icons/check.png', _external=True) }}"></td>
+                {% else %}
+                <td></td>
+                {% endif %}
+
+                {% if r.stroller %}
+                <td><img class="check" src="{{ url_for('static', filename='images/icons/check.png', _external=True) }}"></td>
+                {% else %}
+                <td></td>
+                {% endif %}
+
+                <td style="float: right"><b>{{r.price}}€</b></td>
+
+            {% elif r.viaFerrataKit %}
+                
+                <td></td>
+                <td></td>
+                <td style="background-color: rgba(34,155,101,0.5)"><img class="check" src="{{ url_for('static', filename='images/icons/check.png', _external=True) }}"></td>
+
+                {% if r.alpBoots %}
+                <td><img class="check" src="{{ url_for('static', filename='images/icons/check.png', _external=True) }}"></td>
+                <td>{{r.alpBootSize}}</td>
+                {% else %}
+                <td></td>
+                <td></td>
+                {% endif %}
+
+                {% if r.crampons %}
+                <td><img class="check" src="{{ url_for('static', filename='images/icons/check.png', _external=True) }}"></td>
+                {% else %}
+                <td></td>
+                {% endif %}
+                
+                {% if r.iceAxe %}
+                <td><img class="check" src="{{ url_for('static', filename='images/icons/check.png', _external=True) }}"></td>
+                {% else %}
+                <td></td>
+                {% endif %}
+
+                <td style="background-color: rgba(34,155,101,0.5)"><img class="check" src="{{ url_for('static', filename='images/icons/check.png', _external=True) }}"></td>
+                <td style="background-color: rgba(34,155,101,0.5)"><img class="check" src="{{ url_for('static', filename='images/icons/check.png', _external=True) }}"></td>
+
+                {% if r.gaiters %}
+                <td><img class="check" src="{{ url_for('static', filename='images/icons/check.png', _external=True) }}"></td>
+                {% else %}
+                <td></td>
+                {% endif %}
+                
+                {% if r.poles %}
+                <td><img class="check" src="{{ url_for('static', filename='images/icons/check.png', _external=True) }}"></td>
+                {% else %}
+                <td></td>
+                {% endif %}
+                
+                {% if r.techIceAxes %}
+                <td><img class="check" src="{{ url_for('static', filename='images/icons/check.png', _external=True) }}"></td>
+                {% else %}
+                <td></td>
+                {% endif %}
+
+                {% if r.iceCrampon %}
+                <td><img class="check" src="{{ url_for('static', filename='images/icons/check.png', _external=True) }}"></td>
+                {% else %}
+                <td></td>
+                {% endif %}
+
+                {% if r.backpack %}
+                <td><img class="check" src="{{ url_for('static', filename='images/icons/check.png', _external=True) }}"></td>
+                {% else %}
+                <td></td>
+                {% endif %}
+
+                {% if r.climbingShoes %}
+                <td><img class="check" src="{{ url_for('static', filename='images/icons/check.png', _external=True) }}"></td>
+                {% else %}
+                <td></td>
+                {% endif %}
+                    
+                {% if r.kidClimbingShoes %}
+                <td><img class="check" src="{{ url_for('static', filename='images/icons/check.png', _external=True) }}"></td>
+                {% else %}
+                <td></td>
+                {% endif %}
+
+                <td style="background-color: rgba(34,155,101,0.5)"><img class="check" src="{{ url_for('static', filename='images/icons/check.png', _external=True) }}"></td>
+
+                {% if r.crashpad %}
+                <td><img class="check" src="{{ url_for('static', filename='images/icons/check.png', _external=True) }}"></td>
+                {% else %}
+                <td>--</td>
+                {% endif %}
+
+                {% if r.slackline %}
+                <td><img class="check" src="{{ url_for('static', filename='images/icons/check.png', _external=True) }}"></td>
+                {% else %}
+                <td></td>
+                {% endif %}
+
+                {% if r.hikingShoes %}
+                <td><img class="check" src="{{ url_for('static', filename='images/icons/check.png', _external=True) }}"></td>
+                {% else %}
+                <td></td>
+                {% endif %}
+
+                {% if r.babyCarrier %}
+                <td><img class="check" src="{{ url_for('static', filename='images/icons/check.png', _external=True) }}"></td>
+                {% else %}
+                <td></td>
+                {% endif %}
+
+                {% if r.stroller %}
+                <td><img class="check" src="{{ url_for('static', filename='images/icons/check.png', _external=True) }}"></td>
+                {% else %}
+                <td></td>
+                {% endif %}
+
+
+                <td style="float: right"><b>{{r.price}}€</b></td>
+            
+            {% else %}
+
+                <td></td>
+                <td></td>
+                <td></td>
+
+                {% if r.alpBoots %}
+                <td><img class="check" src="{{ url_for('static', filename='images/icons/check.png', _external=True) }}"></td>
+                <td>{{r.alpBootSize}}</td>
+                {% else %}
+                <td></td>
+                <td></td>
+                {% endif %}
+
+                {% if r.crampons %}
+                <td><img class="check" src="{{ url_for('static', filename='images/icons/check.png', _external=True) }}"></td>
+                {% else %}
+                <td></td>
+                {% endif %}
+                
+                {% if r.iceAxe %}
+                <td><img class="check" src="{{ url_for('static', filename='images/icons/check.png', _external=True) }}"></td>
+                {% else %}
+                <td></td>
+                {% endif %}
+                
+                {% if r.helmet %}
+                <td><img class="check" src="{{ url_for('static', filename='images/icons/check.png', _external=True) }}"></td>
+                {% else %}
+                <td></td>
+                {% endif %}
+                
+                {% if r.harness %}
+                <td><img class="check" src="{{ url_for('static', filename='images/icons/check.png', _external=True) }}"></td>
+                {% else %}
+                <td></td>
+                {% endif %}
+                
+                {% if r.gaiters %}
+                <td><img class="check" src="{{ url_for('static', filename='images/icons/check.png', _external=True) }}"></td>
+                {% else %}
+                <td></td>
+                {% endif %}
+                
+                {% if r.poles %}
+                <td><img class="check" src="{{ url_for('static', filename='images/icons/check.png', _external=True) }}"></td>
+                {% else %}
+                <td></td>
+                {% endif %}
+                
+                {% if r.techIceAxes %}
+                <td><img class="check" src="{{ url_for('static', filename='images/icons/check.png', _external=True) }}"></td>
+                {% else %}
+                <td></td>
+                {% endif %}
+
+                {% if r.iceCrampon %}
+                <td><img class="check" src="{{ url_for('static', filename='images/icons/check.png', _external=True) }}"></td>
+                {% else %}
+                <td></td>
+                {% endif %}
+
+                {% if r.backpack %}
+                <td><img class="check" src="{{ url_for('static', filename='images/icons/check.png', _external=True) }}"></td>
+                {% else %}
+                <td></td>
+                {% endif %}
+
+                {% if r.climbingShoes %}
+                <td><img class="check" src="{{ url_for('static', filename='images/icons/check.png', _external=True) }}"></td>
+                {% else %}
+                <td></td>
+                {% endif %}
+
+                {% if r.kidClimbingShoes %}
+                <td><img class="check" src="{{ url_for('static', filename='images/icons/check.png', _external=True) }}"></td>
+                {% else %}
+                <td></td>
+                {% endif %}
+
+                {% if r.viaFerrataShock %}
+                <td><img class="check" src="{{ url_for('static', filename='images/icons/check.png', _external=True) }}"></td>
+                {% else %}
+                <td></td>
+                {% endif %}
+
+                {% if r.crashpad %}
+                <td><img class="check" src="{{ url_for('static', filename='images/icons/check.png', _external=True) }}"></td>
+                {% else %}
+                <td></td>
+                {% endif %}
+
+                {% if r.slackline %}
+                <td><img class="check" src="{{ url_for('static', filename='images/icons/check.png', _external=True) }}"></td>
+                {% else %}
+                <td></td>
+                {% endif %}
+
+                {% if r.hikingShoes %}
+                <td><img class="check" src="{{ url_for('static', filename='images/icons/check.png', _external=True) }}"></td>
+                {% else %}
+                <td></td>
+                {% endif %}
+
+                {% if r.babyCarrier %}
+                <td><img class="check" src="{{ url_for('static', filename='images/icons/check.png', _external=True) }}"></td>
+                {% else %}
+                <td></td>
+                {% endif %}
+
+                {% if r.stroller %}
+                <td><img class="check" src="{{ url_for('static', filename='images/icons/check.png', _external=True) }}"></td>
+                {% else %}
+                <td></td>
+                {% endif %}
+                
+                <td style="float: right"><b>{{r.price}}€</b></td>
+            
+            {% endif %}
+
+        </tr>
+        {% endfor %}
+
+    </tbody>
+    <tfoot>
+    <td><b>TOTAL</b></td>  
+    <td><b>{{resa.total}}€</b></td>
+        
+    </tfoot>
+</table>
+</div>
+
+<div class="container">
+     <h4>IMPORTANT INFORMATION</h4>
+     <ul> 
+         <li>You can pick up your gear <b>the day before the start of the reservation from 16.00</b></li>
+         <li>In case you return the gear sooner or you pick it up later than what you reserved, <b>the final price will be adjusted accordingly</b></li>
+         <li>To formalize your reservation, please <b>bring a valid VISA, Mastercard or Amex card to the shop the day of the pick up</b>. This card won't be charged.</li>
+         <li>The payment <b>will be done in full the last day of the reservation</b> once the gear has been returned.</li>
+         <li>If you need to make any further change to your reservation or to provide extra information, you <b>can answer to this email</b> or it can be done straight in the shop. </li>
+         <li>There is <b>no need to print this email</b>. Save some trees!</li>
+     </ul>
+
+     <p> Kind regards,<br><br>
+
+     The SPORTS SHOP team</p>
+</div>
+
+</body>
+</html>

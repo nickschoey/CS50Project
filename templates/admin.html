@@ -1,0 +1,195 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Select Gear
+{% endblock %}
+
+{% block body %}
+
+style= "background-color: #000000; background-image: url('../static/images/splash.jpg'); background-repeat: no-repeat; background-size: cover"
+
+{% endblock %}
+
+
+{% block main %}
+
+<div class="container">
+<div class="jumbotron">
+    <div class="row" style="text-align: center;">
+        <h1 style="color: white">Administration tools</h1>
+    </div>
+    <div class="row">
+    <div class="btn-group btn-group-lg">
+    <button class="btn btn-primary filter" data-target="all">All</button>
+    <button class="btn btn-primary filter" data-target="waiting">New</button>
+    <button class="btn btn-primary filter" data-target="confirmed">Confirmed</button>
+    <button class="btn btn-primary filter" data-target="refused">Refused</button>
+    <button class="btn btn-primary filter" data-target="archived">Archived</button>
+    <button class="btn btn-primary filter" data-target="deleted">Deleted</button>
+    <button class="btn btn-primary filter" data-target="inactive">Inactive</button>
+    </div>
+    </div>
+
+    <div class="row" style="margin-top: 7px">
+    <div class="btn-group btn-group-lg" >
+        <button class="btn btn-primary filterdate" id="all" data-target="all">All</button>
+        <button class="btn btn-primary filterdate" id="today" data-target="">Today</button>
+        <button class="btn btn-primary filterdate" id="tomorrow" data-target="">Tomorrow</button>
+        <button class="btn btn-primary filterdate" id="dayafter" data-target="">In three days</button>
+    </div>
+    </div>
+
+    <table id="historyAdmin" class="table order-column" width="100%" cellspacing="0" style="color: white">
+        <thead>
+            <tr class="tableHead">
+                <th></th>
+                <th> User ID</th>
+                <th> ID</th>
+                <th> Created</th>
+                <th> Start</th>
+                <th> End</th>
+                <th> People</th>
+                <th> Total</th>
+                <th> Status</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for resa in data %}
+            {% if resa.status == 0 %}
+                <tr data-status="inactive" data-time="{{resa.datestart.strftime('%b %-d %Y')}}">
+                {% elif resa.status == 1 %}
+                <tr data-status="waiting" data-time="{{resa.datestart.strftime('%b %-d %Y')}}">
+                {% elif resa.status == 2 %}
+                <tr data-status="confirmed" data-time="{{resa.datestart.strftime('%b %-d %Y')}}">
+                {% elif resa.status == 3 %}
+                <tr data-status="refused" data-time="{{resa.datestart.strftime('%b %-d %Y')}}">
+                {% elif resa.status == 4 %}
+                <tr data-status="deleted" data-time="{{resa.datestart.strftime('%b %-d %Y')}}">
+                {% elif resa.status == 5 %}
+                <tr data-status="archived" data-time="{{resa.datestart.strftime('%b %-d %Y')}}">
+                {% else %}
+                <tr data-status="unknown" data-time="{{resa.datestart.strftime('%b %-d %Y')}}">
+                {% endif %}
+                <td><button type="button" data-toggle="modal" data-target="#resaUniModalAdmin" id ={{resa.resa_id}} onclick="loadDocAdmin(this.id)">Info</button></td>
+                <td>{{resa.fullname}}</td>
+                <td>{{resa.resa_id}}</td>
+                <td>{{resa.creationdate}}</td>
+                <td>{{resa.datestart.strftime('%d-%b-%Y')}}</td>
+                <td>{{resa.dateend.strftime('%d-%b-%Y')}}</td>
+                <td>{{resa.people}}</td>
+                <td>{{resa.total}}€</td>
+                {% if resa.status == 0 %}
+                <td><i class="fa fa-question fa-2x" aria-hidden="true" data-toggle='tooltip' title='Inactive'></i></td>
+                {% elif resa.status == 1 %}
+                <td><i class="fa fa-square-o fa-2x" aria-hidden="true" data-toggle='tooltip' title='Awaiting Confirmation'></i></td>
+                {% elif resa.status == 2 %}
+                <td><i class="fa fa-check-square-o fa-2x" aria-hidden="true" data-toggle='tooltip' title='Confirmed!'></i></td>
+                {% elif resa.status == 3 %}
+                <td><i class="fa fa-times fa-2x text-danger" aria-hidden="true" data-toggle='tooltip' title='Refused reservation'></i></td>
+                {% elif resa.status == 4 %}
+                <td><i class="fa fa-trash-o fa-2x" aria-hidden="true" data-toggle='tooltip' title='Deleted'></i></td>
+                {% elif resa.status == 5 %}
+                <td><i class="fa fa-archive fa-2x" aria-hidden="true" data-toggle='tooltip' title='Archived'></i></td>
+                {% else %}
+                <td>uops</td>
+                {% endif %}
+
+
+            </tr>
+            {% endfor %}
+        </tbody>
+        <tfoot>
+            <tr>
+                <th></th>
+                <th> User ID</th>
+                <th> ID</th>
+                <th> Created</th>
+                <th> Start</th>
+                <th> End</th>
+                <th> People</th>
+                <th> Total</th>
+                <th> Status</th>
+            </tr>
+
+        </tfoot>
+    </table>
+</div>
+</div>
+
+
+<div class="modal fade" id="resaUniModalAdmin" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+      <div class="col-sm-10">
+       <h3 class="modal-title" id="resaUniTitleAdmin"></h3>
+       <h5 class="modal-title" id="resaUniSubtitleAdmin"></h5>
+       </div>
+       <div class="col-sm-2" id="status">
+          
+            <em class="fa fa-trash fa-4x"></em>
+          
+        </div>
+       </div>
+       <div class="modal-body" >
+       <div class="row">
+       <div class="col-sm-6">
+          <a class="btn btn-default" id="editResa" style="float: left">
+            <em class="fa fa-pencil
+            "></em>
+          </a>
+        </div>
+        <div class="col-sm-6">
+        <div class="button-group" style="float: right">
+          <a class="btn btn-danger" id="deleteResa">
+            <em class="fa fa-trash"></em>
+          </a>
+          <a class="btn btn-default" id="archiveResa">
+            <em class="fa fa-archive"></em>
+          </a>
+          </div>
+        </div> 
+       </div>
+       <div class="row">
+            <div class="col-sm-6">
+            <div id="resaUniAdminContent" class="modalAdminInfo"> </div>
+
+            </div>
+            <div class="col-sm-6">
+            <div id="resaUniAdminContentRight" class="modalAdminInfo"></div>
+            </div>
+        </div>  
+            <div class="row">
+                <div class ="col-sm-12 modalAdminInfo" id="resaUniAdminContentLow"></div> 
+            </div> 
+
+            <table class="table">
+                <thead>
+                    <th> <img class="historyIcon" data-toggle="tooltip" title="Name" src="{{ url_for('static', filename='images/icons/user.png') }}" alt="Name"></th>
+                    <th> <img class="historyIcon" data-toggle="tooltip" title="Total" src="{{ url_for('static', filename='images/icons/euro.png') }}" alt="Total"></th>
+                </thead>
+                <tbody id="resaUniBodyAdmin" class="modalAdminInfo">
+                    
+                </tbody>
+                <tfoot id="resaUniFootAdmin" class="modalAdminInfo">
+                    
+                </tfoot>
+            </table>
+
+       </div>
+       <div class="modal-footer">
+        <div id="adminButtons"></div>
+            <div class="col-sm-5" style="text-align: left">
+          <a  id="confirmResa" class="btn btn-success btn-lg">Confirm</a>
+          <a  id="rejectResa" class="btn btn-warning btn-lg">Reject</a>
+          </div>
+            <div class="col-sm-7">
+          <button type="button" class="btn btn-secondary btn-lg" data-dismiss="modal">Close</button>
+            </div>
+
+          
+       </div>
+    </div>
+  </div>
+</div><!-- Modal -->
+{% endblock %}  

@@ -1,0 +1,203 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Dashboard
+{% endblock %}
+
+{% block body %}
+style= "background-color: #000000; background-image: url('static/images/splash.jpg'); background-repeat: no-repeat; background-attachment: fixed; background-position: center"
+
+{% endblock %}
+
+
+{% block main %}
+
+
+<div class="container text-center">
+	<div class="col-sm-2">
+  	</div>
+
+	<div class="col-sm-8">
+		<div class="jumbotron" id="jumboDash">
+		<div class="row" style="text-align: center; color: white">
+			<h1>Dashboard</h1>
+		</div>
+		<div class="row">
+	 		<ul class="ds-btn" style="text-align: center">
+				 <li id="newResa">
+					<a class="btn btn-lg btn-success" id="newResa">
+					<i class="glyphicon glyphicon-plus pull-left"></i><span>New Reservation<br><small>Create new reservation</small></span></a>
+				</li>
+				<li>
+					<a class="btn btn-lg btn-primary" href="{{ url_for('history') }}">
+					<i class="glyphicon glyphicon-list-alt pull-left"></i><span>History<br><small>View/Modify reservation</small></span></a>
+				</li>
+
+			</ul>
+  		</div>
+  		<div class="row" style="color: white; text-align: center;">
+  			<h3>Latest reservations</h3>
+  		</div>
+  		<div class="row">
+		  	<table id="history" class="table order-column" width="100%" cellspacing="0" style="color: white">
+		        <thead>
+		            <tr>
+		                <th></th>
+		                <th> ID</th>
+		                <th> Created</th>
+		                <th> Start</th>
+		                <th> End</th>
+		                <th> People</th>
+		                <th> Total</th>
+		                <th> Status</th>
+		                
+		            </tr>
+		        </thead>
+		        <tbody>
+		            {% for resa in data %}
+		            <tr>
+		                <td><button type="button" data-toggle="modal" data-target="#resaUniModal" id ={{resa.resa_id}} onclick="loadDocAdmin(this.id)">Info</button></td>
+		                <td>{{resa.resa_id}}</td>
+		                <td>{{resa.creationdate.strftime('%-d %b %Y')}}</td>
+		                <td>{{resa.datestart.strftime('%-d %b %Y')}}</td>
+		                <td>{{resa.dateend.strftime('%-d %b %Y')}}</td>
+		                <td>{{resa.people}}</td>
+		                <td>{{resa.total}}€</td>
+		                {% if resa.status == 0 %}
+		                <td><i class="fa fa-question fa-2x" aria-hidden="true" data-toggle='tooltip' title='Inactive'></i></td>
+		                {% elif resa.status == 1 %}
+		                <td><i class="fa fa-square-o fa-2x" aria-hidden="true" data-toggle='tooltip' title='Awaiting Confirmation'></i></td>
+		                {% elif resa.status == 2 %}
+		                <td><i class="fa fa-check-square-o fa-2x" aria-hidden="true" data-toggle='tooltip' title='Confirmed!'></i></td>
+		                {% elif resa.status == 3 %}
+		                <td><i class="fa fa-ban fa-square-o fa-2x text-danger" aria-hidden="true" data-toggle='tooltip' title='Refused reservation'></i></td>
+		                {% elif resa.status == 4 %}
+		                <td><i class="fa fa-trash-o fa-2x" aria-hidden="true" data-toggle='tooltip' title='Deleted'></i></td>
+		                {% elif resa.status == 5 %}
+		                <td><i class="fa fa-archive fa-2x" aria-hidden="true" data-toggle='tooltip' title='Archived'></i></td>
+		                {% else %}
+		                <td>uops</td>
+		                {% endif %}
+		                
+
+		            </tr>
+		            {% endfor %}
+		        </tbody>
+		    </table>
+		</div>
+  		</div>
+  	</div>
+
+
+  		
+</div>
+
+  	<div class="col-sm-2">
+  	</div>
+</div>
+
+<div class="container text-center">
+	
+	<div class="col-sm-2">
+  	</div>
+	<div class="col-sm-8">
+  		<form method="POST" action="/send">
+		<div class="jumbotron" id="jumboResa" style="display: none;">
+		<div class="row" style="color: white; text-align: center">
+		<h1> New Reservation</h1>
+		</div>
+  		
+	  		<div class="form-group">
+			    <div class="input-group input-group-lg" id="pickDate" style="display: none">
+			     <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
+			     <input type="text" name="datefilter" class="form-control" value="{{request.form.dates}}" placeholder="Please select your dates" readonly width=50% style="background-color: white">
+			    </div>
+			    <div class="alert alert-success" id="pInfo" style="display: none; margin-top: 5px">
+			    </div>
+			</div>
+			<div class="btn-group">
+				<div id="goGear" style="display: none">
+				<input type="submit" class="btn btn-lg btn-success" value="Pick your gear" >
+				</div><br>
+				<div id="backDash">
+				<button type="button" class="btn btn-danger btn-lg" id="backDash">Back</button>
+				</div>
+			</div>
+
+		<input type="text" name="startDate" id="startDate" class="form-control" value="{{request.form.startDate}}" style="display: none" readonly >
+  		<input type="text" name="endDate" id="endDate" class="form-control" value="{{request.form.endDate}}"  style="display: none" readonly >
+  		<input type="text" name="days" id="days" class="form-control" value="{{request.form.days}}"   style="display: none" readonly ">
+		</div>
+		</form>
+
+	</div>
+	<div class="col-sm-2">
+  	</div>
+</div>
+
+
+<div class="modal fade" id="resaUniModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+      <div class="col-sm-10">
+       <h3 class="modal-title" id="resaUniTitleAdmin"></h3>
+       <h5 class="modal-title" id="resaUniSubtitleAdmin"></h5>
+       </div>
+       <div class="col-sm-2" id="status">
+          
+            <em class="fa fa-trash fa-4x"></em>
+          
+        </div>
+       </div>
+       <div class="modal-body" >
+
+       <div class="row">
+            <div class="col-sm-6">
+            <div id="resaUniAdminContent" class="modalAdminInfo"> </div>
+
+            </div>
+            <div class="col-sm-6">
+            <div id="resaUniAdminContentRight" class="modalAdminInfo"></div>
+            </div>
+        </div>  
+            <div class="row">
+                <div class ="col-sm-12 modalAdminInfo" id="resaUniAdminContentLow"></div> 
+            </div> 
+
+            <table class="table">
+                <thead>
+                    <th> <img class="historyIcon" data-toggle="tooltip" title="Name" src="{{ url_for('static', filename='images/icons/user.png') }}" alt="Name"></th>
+                    <th> <img class="historyIcon" data-toggle="tooltip" title="Total" src="{{ url_for('static', filename='images/icons/euro.png') }}" alt="Total"></th>
+                </thead>
+                <tbody id="resaUniBodyAdmin" class="modalAdminInfo">
+                    
+                </tbody>
+                <tfoot id="resaUniFootAdmin" class="modalAdminInfo">
+                    
+                </tfoot>
+            </table>
+
+       </div>
+       <div class="modal-footer">
+        
+            <div class="col-sm-5" style="text-align: left">
+          </div>
+            <div class="col-sm-7">
+          <button type="button" class="btn btn-secondary btn-lg" data-dismiss="modal">Close</button>
+            </div>
+
+          
+       </div>
+    </div>
+  </div>
+</div><!-- Modal -->
+
+
+
+
+
+
+
+
+{% endblock %}

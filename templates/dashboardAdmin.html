@@ -1,0 +1,252 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Dashboard
+{% endblock %}
+
+{% block body %}
+style= "background-color: #000000; background-image: url('../static/images/splash.jpg'); background-repeat: no-repeat; background-attachment: fixed; background-position: center"
+
+{% endblock %}
+
+
+{% block main %}
+
+
+<div class="container text-center">
+	<div class="col-sm-2">
+  	</div>
+
+	<div class="col-sm-8">
+		<div class="jumbotron" id="jumboDash">
+		<div class="row" style="text-align: center; color: white">
+			<h1>Dashboard</h1>
+		</div>
+		<div class="row" style="margin-right: 0px;margin-left: 20px">
+	 		<ul class="ds-btn" style="text-align: center">
+				 <li id="newResa">
+					<a class="btn btn-lg btn-success" id="newResaAdmin">
+					<i class="glyphicon glyphicon-plus pull-left"></i><span>New Reservation<br><small>Create new reservation</small></span></a>
+				</li>
+				<li>
+					<a class="btn btn-lg btn-primary" href="{{ url_for('admin') }}">
+					<i class="glyphicon glyphicon-list-alt pull-left"></i><span>History<br><small>Administration Tools</small></span></a>
+				</li>
+
+			</ul>
+  		</div>
+ 		
+  		</div>
+  	</div>
+  	<div class="col-sm-2">
+  	</div> 		
+</div>
+
+<div class="container text-center">
+	
+	<div class="col-sm-2">
+  	</div>
+	<div class="col-sm-8">
+		<div class="jumbotron" id="jumboResaUserMenu" style="display: none;">
+		<div class="row" style="color: white; text-align: center">
+		<h1> User</h1>
+		</div>
+		<div class="row" style="margin-right: 58px; margin-left: 53px;">
+	 		<ul class="ds-btn" style="text-align: center">
+				 <li id="newUser">
+					<a class="btn btn-lg btn-success" id="newUser">
+					<i class="glyphicon glyphicon-plus pull-left"></i><span>New User<br><small>Create new User</small></span></a>
+				</li>
+				<li>
+					<a class="btn btn-lg btn-success" id="existingUser" href="{{ url_for('userList') }}">
+					<i class="glyphicon glyphicon-list-alt pull-left"></i><span>Existing User<br><small>Select from userlist</small></span></a>
+				</li>
+
+			</ul>
+  		</div>
+		<div class="row" style="text-align: center;">
+			<div id="backDash">
+				<button type="button" class="btn btn-danger btn-lg" id="backDashAdmin" style="margin-top: 15px">Back</button>
+			</div>
+		</div>
+		</div>
+	</div>
+	<div class="col-sm-2">
+  	</div>
+</div>
+
+<form method="POST" action="/sendAdmin">
+<div class="container text-center">
+	<div class="col-sm-2">
+  	</div>
+
+	<div class="col-sm-8">
+		<div class="jumbotron" id="newUserAdmin" style="display: none">
+			<div class="row" style="text-align: center; color: white">
+				<h1>New User</h1>
+			</div>
+		<div  class="row">
+		<div class="row">
+			<div class="col-sm-3"></div>
+			<div class="col-sm-6">
+			<div class="form-group">
+				<label for="name0" style="color: white">Name</label>
+				<div class="input-group input-group-lg">
+				<span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+				<input type="text" name="name0" class="form-control input-lg" placeholder="Please insert full name" required>
+				</div>
+			</div>
+			</div>
+			<div class="col-sm-3"></div>
+		</div>
+			<div class="row">
+			<div class="col-sm-2"></div>
+			<div class="col-sm-8">
+			<div class="form-group">
+			    <label for="datefilter" style="color: white">Dates</label>
+			    <div class="input-group input-group-lg" id="pickDate" style="display: none">
+			     <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
+			     <input type="text" name="datefilter" class="form-control" value="{{request.form.dates}}" placeholder="Please select your dates" readonly width=50% style="background-color: white">
+			    </div>
+			    <div class="alert alert-success" id="pInfo" style="display: none; margin-top: 5px">
+			    </div>
+			</div>
+			</div>
+			<div class="col-sm-2"></div>
+			</div>
+
+			<div class="form-group row">
+				<div class="col-xs-6">
+					<label for="phoneAdmin" style="color: white">Telephone</label>
+					<input type="text" name="phoneAdmin" id="phoneAdmin" onchange="countryCodeAdmin()" required class="form-control input-lg">
+					<input type="tel" id="telephone" name="telephone" placeholder="" style="display: none">
+				</div>
+				<div class="col-xs-6">
+					<label for="email" style="color: white">Email</label>
+					<div class="input-group input-group-lg">
+					<span class="input-group-addon"><i class="fa fa-at"></i></span>
+					<input type="text" name="emailAdmin" class="form-control input-lg" placeholder="Please insert email address">
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			<div id="goGear" style="display: none">
+				<input type="submit" class="btn btn-lg btn-success" value="Pick your gear" >
+			</div>
+			<button type="button" class="btn btn-danger btn-lg" id="backDashUser" style="margin-top: 7px">Back</button>
+		</div>
+	</div>
+	<div class="col-sm-2">
+
+
+		<input type="text" name="startDate" id="startDate" class="form-control" value="{{request.form.startDate}}" style="display: none" readonly >
+  		<input type="text" name="endDate" id="endDate" class="form-control" value="{{request.form.endDate}}"  style="display: none" readonly >
+  		<input type="text" name="days" id="days" class="form-control" value="{{request.form.days}}"   style="display: none" readonly ">
+	</div>
+</div>
+</div>
+</form>
+
+
+
+
+
+<div class="container text-center">
+	
+	<div class="col-sm-2">
+  	</div>
+	<div class="col-sm-8">
+  		<form>
+		<div class="jumbotron" id="jumboResaDatesAdmin" style="display: none; background-color: rgba(0,0,0,0.6)">
+		<div class="row" style="color: white; text-align: center">
+		<h1> New Reservation</h1>
+		</div>
+  		
+	  		<div class="form-group">
+			    <div class="input-group input-group-lg" id="pickDate" style="display: none">
+			     <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
+			     <input type="text" name="datefilter" class="form-control" value="{{request.form.dates}}" placeholder="Please select your dates" readonly width=50% style="background-color: white">
+			    </div>
+			    <div class="alert alert-success" id="pInfo" style="display: none; margin-top: 5px">
+			    </div>
+			</div>
+			
+				<div id="backDash">
+				<button type="button" class="btn btn-danger btn-lg" id="backDashUser">Back</button>
+				</div>
+			</div>
+
+		</form>
+
+	</div>
+	<div class="col-sm-2">
+  	</div>
+</div>
+
+
+<div class="modal fade" id="resaUniModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+      <div class="col-sm-10">
+       <h3 class="modal-title" id="resaUniTitleAdmin"></h3>
+       <h5 class="modal-title" id="resaUniSubtitleAdmin"></h5>
+       </div>
+       <div class="col-sm-2" id="status">
+          
+            <em class="fa fa-trash fa-4x"></em>
+          
+        </div>
+       </div>
+       <div class="modal-body" >
+
+       <div class="row">
+            <div class="col-sm-6">
+            <div id="resaUniAdminContent" class="modalAdminInfo"> </div>
+
+            </div>
+            <div class="col-sm-6">
+            <div id="resaUniAdminContentRight" class="modalAdminInfo"></div>
+            </div>
+        </div>  
+            <div class="row">
+                <div class ="col-sm-12 modalAdminInfo" id="resaUniAdminContentLow"></div> 
+            </div> 
+
+            <table class="table">
+                <thead>
+                    <th> <img class="historyIcon" data-toggle="tooltip" title="Name" src="{{ url_for('static', filename='images/icons/user.png') }}" alt="Name"></th>
+                    <th> <img class="historyIcon" data-toggle="tooltip" title="Total" src="{{ url_for('static', filename='images/icons/euro.png') }}" alt="Total"></th>
+                </thead>
+                <tbody id="resaUniBodyAdmin" class="modalAdminInfo">
+                    
+                </tbody>
+                <tfoot id="resaUniFootAdmin" class="modalAdminInfo">
+                    
+                </tfoot>
+            </table>
+
+       </div>
+       <div class="modal-footer">
+        
+            <div class="col-sm-5" style="text-align: left">
+          </div>
+            <div class="col-sm-7">
+          <button type="button" class="btn btn-secondary btn-lg" data-dismiss="modal">Close</button>
+            </div>
+
+          
+       </div>
+    </div>
+  </div>
+</div><!-- Modal -->
+
+
+
+
+
+
+
+
+{% endblock %}

@@ -1,0 +1,205 @@
+<div id="alpinism" class="tab-pane fade in active">
+  <div class="container">
+    <div class="jumbotron" style="padding-right: 40px">
+        <p style="color: white">Reservation number #<b>{{resa_id}}</b> for <b>{{days}}</b> day(s) between <b>{{dates}}</b></p>
+
+    <div class="row">
+        <div class="col-sm-6">
+
+              
+              <div class="[ form-group ]">
+               <div class="checkbox" id="popoverSize">
+              <i class="fa fa-info fa-2x" style="color: white" data-toggle="modal" data-target="#infoShoes"></i>
+                  <label style="font-size: 2em; color: white">
+                      <input type="checkbox" name="alpinismShoes" id="alpinismShoes" value="1">
+                      <span class="cr"><i class="cr-icon fa fa-check"></i></span>
+                      Mountaineering Boots
+                  </label>
+                  <label style="color: white" id="alpShoesPrice" style="display: none" disabled>
+                  </label>
+              </div>
+              </div>
+              <input type="hidden" value="0" name="alpinismShoes">           
+
+    <!--        <div class="form-group has-feedback" id="shoeSize" style="display: none">
+              <select id="size" name="alpinismShoeSize"  class="selectpicker show-tick" title="Shoe size" data-width="auto">
+                  <option value="00">I don't know</option>
+                  <option data-divider="true"></option>
+                <optgroup label="Women's">
+                  <option value="36.5" data-subtext="UK 4 US 6">EU 36.5</option>
+                  <option value="37" data-subtext="UK 4.5 US 6.5">EU 37</option>
+                  <option value="37.5" data-subtext="UK 5 US 7">EU 37.5</option>
+                  <option value="38" data-subtext="UK 5.5 US 7.5">EU 38</option>
+                  <option value="38.5" data-subtext="UK 6 US 8">EU 38.5</option>
+                  <option value="39" data-subtext="UK 6.5 US 8.5">EU 39</option>
+                  <option value="39.5" data-subtext="UK 7 US 9">EU 39.5</option>
+                  <option value="40" data-subtext="UK 7.5 US 9.5">EU 40</option>
+                  <option value="40.5" data-subtext="UK 8 US 10.5">EU 40.5</option>
+                </optgroup>
+                <optgroup label="Men's">
+                  <option value="41" data-subtext="UK 7.5 US 8">EU 41</option>
+                  <option value="41.5" data-subtext="UK 8 US 8.5">EU 41.5</option>
+                  <option value="42" data-subtext="UK 8.5 US 9">EU 42</option>
+                  <option value="42.5" data-subtext="UK 9 US 9.5">EU 42.5</option>
+                  <option value="43" data-subtext="UK 9.5 US 10">EU 43</option>
+                  <option value="43.5" data-subtext="UK 10 US 10.5">EU 43.5</option>
+                  <option value="44" data-subtext="UK 10.5 US 11">EU 44</option>
+                  <option value="44.5" data-subtext="UK 11 US 11.5">EU 44.5</option>
+                  <option value="45" data-subtext="UK 11.5 US 12">EU 45</option>
+                  <option value="45.5" data-subtext="UK 12 US 12.5">EU 45.5</option>
+                  <option value="46" data-subtext="UK 12.5 US 13">EU 46</option>
+                  <option value="46.5" data-subtext="UK 13 US 13.5">EU 46.5</option>
+                  <option value="47" data-subtext="UK 13.5 US 14">EU 47</option>
+                  <option value="47.5" data-subtext="UK 14 US 14.5">EU 47.5</option>
+                  <option value="48" data-subtext="UK 14.5 US 15">EU 48</option>
+                  <option value="48.5" data-subtext="UK 15 US 15.5">EU 48.5</option>
+                  <option value="49" data-subtext="UK 15.5 US 16">EU 49</option>
+                  <option value="50" data-subtext="UK 16.5 US 17">EU 50</option>
+                </optgroup>
+              </select>
+
+              <span class="form-control-feedback" id="wSize"></span>
+              <div class="alert alert-danger" id="infoSize" style="width: 60%; opacity: 0.8;margin-top: 5px">Please select your normal every-day shoe size</div>
+            </div> -->
+
+              <div class="[ form-group ]">
+               <div class="checkbox">
+              <i class="fa fa-info fa-2x" style="color: white" data-toggle="modal" data-target="#infoCrampons"></i>
+                  <label style="font-size: 2em; color: white">
+                      <input type="checkbox" name="crampons" id="crampons" value="1">
+                      <span class="cr"><i class="cr-icon fa fa-check"></i></span>
+                      Crampons
+                  </label>
+                  <label style="color: white" id="cramponsPrice" style="display: none" disabled>
+                  </label>
+              </div>
+              </div>
+              <input type="hidden" value="0" name="crampons"> 
+
+            <div class="[ form-group ]">
+               <div class="checkbox">
+              <i class="fa fa-info fa-2x" style="color: white" data-toggle="modal" data-target="#infoPiolet"></i>
+                  <label style="font-size: 2em; color: white">
+                      <input type="checkbox" name="piolet" id="piolet" value="1">
+                      <span class="cr"><i class="cr-icon fa fa-check"></i></span>
+                      Touring Ice Axe
+                  </label>
+                  <label style="color: white" id="pioletPrice" style="display: none" disabled>
+                  </label>
+              </div>
+              </div>
+              <input type="hidden" value="0" name="piolet">
+
+              <div class="[ form-group ]">
+               <div class="checkbox">
+              <i class="fa fa-info fa-2x" style="color: white" data-toggle="modal" data-target="#infoCasque"></i>
+                  <label style="font-size: 2em; color: white">
+                      <input type="checkbox" name="casque" id="casque" value="1">
+                      <span class="cr"><i class="cr-icon fa fa-check"></i></span>
+                      Helmet
+                  </label>
+                  <label style="color: white" id="casquePrice" style="display: none" disabled>
+                  </label>
+              </div>
+              </div>
+              <input type="hidden" value="0" name="casque">
+
+              <div class="[ form-group ]">
+               <div class="checkbox">
+              <i class="fa fa-info fa-2x" style="color: white" data-toggle="modal" data-target="#infoHarness"></i>
+                  <label style="font-size: 2em; color: white">
+                      <input type="checkbox" name="harness" id="harness" value="1">
+                      <span class="cr"><i class="cr-icon fa fa-check"></i></span>
+                      Harness
+                  </label>
+                  <label style="color: white" id="harnessPrice" style="display: none" disabled>
+                  </label>
+              </div>
+              </div>
+              <input type="hidden" value="0" name="harness">
+        
+        </div>
+        <div class="col-sm-6">
+
+
+
+              <div class="[ form-group ]">
+               <div class="checkbox">
+              <i class="fa fa-info fa-2x" style="color: white" data-toggle="modal" data-target="#infoGaiters"></i>
+                  <label style="font-size: 2em; color: white">
+                      <input type="checkbox" name="gaiters" id="gaiters" value="1">
+                      <span class="cr"><i class="cr-icon fa fa-check"></i></span>
+                      Gaiters
+                  </label>
+                  <label style="color: white" id="gaitersPrice" style="display: none" disabled>
+                  </label>
+              </div>
+              </div>
+              <input type="hidden" value="0" name="gaiters">
+
+              <div class="[ form-group ]">
+               <div class="checkbox">
+              <i class="fa fa-info fa-2x" style="color: white" data-toggle="modal" data-target="#infoPoles"></i>
+                  <label style="font-size: 2em; color: white">
+                      <input type="checkbox" name="poles" id="poles" value="1">
+                      <span class="cr"><i class="cr-icon fa fa-check"></i></span>
+                      Hiking Poles
+                  </label>
+                  <label style="color: white" id="polesPrice" style="display: none" disabled>
+                  </label>
+              </div>
+              </div>
+              <input type="hidden" value="0" name="poles">
+
+              <div class="[ form-group ]">
+               <div class="checkbox">
+              <i class="fa fa-info fa-2x" style="color: white" data-toggle="modal" data-target="#infoBackpack"></i>
+                  <label style="font-size: 2em; color: white">
+                      <input type="checkbox" name="backpack" id="backpack" value="1">
+                      <span class="cr"><i class="cr-icon fa fa-check"></i></span>
+                      Alpinism Backpack
+                  </label>
+                  <label style="color: white" id="backpackPrice" style="display: none" disabled>
+                  </label>
+              </div>
+              </div>
+              <input type="hidden" value="0" name="backpack">
+
+
+              <div class="[ form-group ]">
+               <div class="checkbox">
+              <i class="fa fa-info fa-2x" style="color: white" data-toggle="modal" data-target="#infoPioletGlace"></i>
+                  <label style="font-size: 2em; color: white">
+                      <input type="checkbox" name="pioletGlace" id="pioletGlace" value="1">
+                      <span class="cr"><i class="cr-icon fa fa-check"></i></span>
+                      Ice-Climbing Axes x2
+                  </label>
+                  <label style="color: white" id="pioletGlacePrice" style="display: none" disabled>
+                  </label>
+              </div>
+              </div>
+              <input type="hidden" value="0" name="pioletGlace">
+
+              <div class="[ form-group ]">
+               <div class="checkbox">
+              <i class="fa fa-info fa-2x" style="color: white" data-toggle="modal" data-target="#infoCramponGlace"></i>
+                  <label style="font-size: 2em; color: white">
+                      <input type="checkbox" name="cramponGlace" id="cramponGlace" value="1">
+                      <span class="cr"><i class="cr-icon fa fa-check"></i></span>
+                      Ice-Climbing Crampons
+                  </label>
+                  <label style="color: white" id="cramponGlacePrice" style="display: none" disabled>
+                  </label>
+              </div>
+              </div>
+              <input type="hidden" value="0" name="cramponGlace">
+
+              
+
+            </div><!--div class="col 6"-->
+
+      </div><!--div class="col-sm-6"-->
+    </div><!--div class="row"-->
+   </div> <!-- Container Alpinism -->
+   </div>
+

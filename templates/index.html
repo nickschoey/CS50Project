@@ -1,0 +1,472 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Select Gear
+{% endblock %}
+
+
+{% block main %}
+<div class="jumbotron">
+  <div class="container text-center">
+    <h1>Fleccionat</h1>      
+    <p>Summer Gear Rental</p>
+    <div class="form-group">
+    <input type="text" name="datefilter" class="form-control" value="" placeholder="Please select your dates" width= 50%/>
+  </div>
+  </div>
+</div>
+<form method="POST" action="/send">
+  <div class="container" style="background-color: #FFFAFA; padding-top: 20px">
+    <div class="row">
+      <div class="col-sm-4">
+          </div>
+      <div class="col-sm-4">
+            <div class="form-group">
+              <label for="InputName">First Name:</label>
+              <input type="text" class="form-control" id="InputName" name="firstName" placeholder="First Name">
+            </div>
+            <div class="form-group">
+              <label for="InputLastName">Last Name:</label>
+              <input type="text" class="form-control" id="InputLastName" name="lastName" placeholder="Last Name">
+            </div>
+            <div class="form-group">
+              <label for="InputName">Email Adress:</label>
+              <input type="email" class="form-control" id="InputEmail" name="eMail" placeholder="Email adress">
+            </div>
+            <div class="form-group">
+              <label for ="People">Number of people:</label> 
+              <select name="people" id="People" name="people">
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+                <option value="6">6</option>
+                <option value="7">7</option>
+                <option value="8">8</option>
+                <option value="9">9</option>
+                <option value="10">10</option>
+                <option value="11">11</option>
+            </select>
+           </div>
+           
+       </div>
+        <div class="col-sm-4">
+        </div>
+    </div>
+  </div> <!-- Container Personal Info -->
+  
+  <div class="container" style="background-color: #e6faff">
+      <div class="row">
+          <div class="col-sm-12">
+           <img style="max-width:100%; padding-top: 20px;" src="{{ url_for('static', filename='images/alpinist.jpg') }}">
+          </div>
+      </div>
+    <div class="row">
+      <div class="col-sm-3">
+      </div>
+      <div class="col-sm-6">
+        <h3>ALPINISM</h3>
+        <form class="form-horizontal">
+          <div class="checkbox">
+            <label><input type="checkbox" value="Mont-Blanc Pack" name="montBlancPack" id="mBlancPack"> Mont-Blanc Pack</label>
+            <span class="help-block">Mont-Blanc pack includes Mountaineering Boots, Crampons, Ice Axe, Helmet and Harness</span>
+          </div>
+          
+          <div class="form-group">
+          <div class="row">
+            <label class="control-label col-sm-6" for="alpinismShoesRadio" style="text-align: left">Mountaineering Boots</label>
+              <div class="col-sm-6">
+                <div class="btn-group" data-toggle="buttons" id="alpinismShoesRadio">
+                  <label class="btn btn-primary" id="yesShoe">
+                    <input type="radio" class="form-control" name="alpinismShoes" id="yesShoeR" value="yes" autocomplete="off" checked="false"> Yes
+                  </label>
+                  <label class="btn btn-primary active" id="noShoe">
+                    <input type="radio" autocomplete="off" class="form-control" id="noShoeR" checked="true"> No
+                  </label>
+                    <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#infoShoes" aria-pressed="false">Info</button>
+                </div>
+                    <!-- Modal -->
+                    <div class="modal fade" id="infoShoes" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                      <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                          <div class="modal-header">
+                           <h3 class="modal-title" id="exampleModalLabel">MOUNTAINEERING BOOTS</h3>
+                           <h5 class="modal-title" id="subtitle">from Wikipedia, the free encyclopedia</h5>
+                           </div>
+                           <div class="modal-body">
+                           <img style="max-width:30%; margin: 10px 10px; float: left;" src="{{ url_for('static', filename='images/mboot.jpeg') }}">
+                            <p>Not to be confused with hiking boots, mountaineering boots are usually taller, stiffer, and insulated.</p>
+
+                            <p>The extra height and stiffness of mountaineering boots helps support the climber in steep terrain where flexible boots could cause unsure footing and possibly result in a fall. This extra stiffness is traditionally achieved through the use of a full steel shank, though some manufacturers have begun to use carbon fiber to create the necessary stiffness.</p>
+
+                            <p>Mountaineering boots are typically designed to be used with crampons. To achieve compatibility with crampons, welts are moulded into the toe and heel of the boot, providing a platform for the crampon to attach to. The stiffness of the boot enhances the precision of the crampon and allows a climber to pursue steeper and more difficult terrain.</p>
+
+                            <p>Another important aspect of mountaineering boots is warmth. To prevent frostbite in extreme cold conditions, synthetic insulation is incorporated into the boot. Lighter weight boots are classified as single boots. These single boots are insulated as a single unit with the insulation being permanently attached to the rest of the boot. Double boots, another classification, typically consist of a non-insulated leather or plastic outer shell with a removable insulated liner. The purpose of a double boot is long-term protection from cold weather. If the liner becomes wet, it can be removed from the shell and dried inside a sleeping bag. Since the insulation cannot be removed from single boots, they are not ideally suited for multi-day cold weather excursions.</p>
+                           </div>
+                           <div class="modal-footer">
+                              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                            <button type="button" class="btn btn-primary" id="okShoe">Add This</button>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+              </div>
+          </div>
+          </div>
+          <div class="form-group has-warning has-feedback" id="shoeSize" style="display: none">
+            <select id="size" name="alpinismShoeSize" class="form-control">
+              <option value="noShoe"> Select boot size </option>
+              <option value="36">EU 36 UK 3.5</option>
+              <option value="36.5">EU 36.5 UK 4</option>
+              <option value="37">EU 37 UK 4.5</option>
+              <option value="37.5">EU 37.5 UK 4.5</option>
+              <option value="38">EU 38 UK 5</option>
+              <option value="38.5">EU 38.5 UK 5.5</option>
+              <option value="39">EU 39 UK 6</option>
+              <option value="39.5">EU 39.5 UK 6</option>
+              <option value="40">EU 40 UK 6.5</option>
+              <option value="40.5">EU 40.5 UK 7</option>
+              <option value="41">EU 41 UK 7.5</option>
+              <option value="41.5">EU 41.5 UK 8</option>
+              <option value="42">EU 42 UK 8</option>
+              <option value="42.5">EU 42.5 UK 8.5</option>
+              <option value="43">EU 43 UK 9</option>
+              <option value="43.5">EU 43.5 UK 9.5</option>
+              <option value="44">EU 44 UK 9.5</option>
+              <option value="44.5">EU 44.5 UK 10</option>
+              <option value="45">EU 45 UK 10.5</option>
+              <option value="45.5">EU 45.5 UK 10.5</option>
+              <option value="46">EU 46 UK 11</option>
+              <option value="46.5">EU 46.5 UK 11.5</option>
+              <option value="47">EU 47 UK 11.5</option>
+              <option value="47.5">EU 47.5 UK 12</option>
+              <option value="48">EU 48 UK 12</option>
+              <option value="48.5">EU 48</option>
+              <option value="49">EU 49</option>
+              <option value="50">EU 50</option>
+            </select>
+            <span class="glyphicon glyphicon-warning-sign form-control-feedback" id="wSize"></span>
+            <div class="alert alert-warning" id="infoSize">Please select your normal every-day shoe size</div>
+          </div>
+
+          <div class="form-group">
+            <div class="row">
+                <label for="crampons" class="control-label col-sm-6" style="text-align: left">Crampons</label>
+            <div class="col-sm-6">
+              <div class="btn-group" data-toggle="buttons">
+                <label class="btn btn-primary" id="yesCrampons">
+                  <input type="radio" name="crampons" value="yes" id="yesCramponsR" autocomplete="off"> Yes
+                </label>
+                <label class="btn btn-primary active" id="noCrampons">
+                  <input type="radio" autocomplete="off" id="noCramponsR" checked> No
+                </label>
+              </div>
+            </div>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <div class="row">
+                <label for="piolet" class="control-label col-sm-6" style="text-align: left">Touring Ice Axe</label>
+              <div class="col-sm-6">
+              <div class="btn-group" data-toggle="buttons">
+                <label class="btn btn-primary" id="yesPiolet">
+                  <input type="radio" name="crampons" value="yes" autocomplete="off"> Yes
+                </label>
+                <label class="btn btn-primary active" id="noPiolet">
+                  <input type="radio" autocomplete="off" checked> No
+                </label>
+              </div>
+            </div>
+          </div>
+          </div>
+          <div class="form-group">
+          <div class="row">
+              <label for="casque" class="control-label col-sm-6" style="text-align: left">Helmet</label>
+          <div class="col-sm-6">
+            <div class="btn-group" data-toggle="buttons">
+              <label class="btn btn-primary" id="yesCasque">
+                <input type="radio" name="casque" value="yes" autocomplete="off" id="yesCasqueR"> Yes
+              </label>
+              <label class="btn btn-primary active" id="noCasque">
+                <input type="radio" autocomplete="off" checked id="noCasqueR"> No
+              </label>
+            </div>
+          </div>
+          </div>
+          </div>
+          <div class="form-group">
+          <div class="row">
+              <label for="harness" class="control-label col-sm-6" style="text-align: left">Harness</label>
+          <div class="col-sm-6">
+            <div class="btn-group" data-toggle="buttons">
+              <label class="btn btn-primary" id="yesHarness">
+                <input type="radio" name="harness" value="yes" autocomplete="off" id="yesHarnessR"> Yes
+              </label>
+              <label class="btn btn-primary active" id="noHarness">
+                <input type="radio" autocomplete="off" id="noHarnessR" checked> No
+              </label>
+            </div>
+          </div>
+          </div>
+          </div>  
+          <span class="help-block">Other alpinism gear</span>
+          <div class="form-group">
+          <div class="row">
+              <label for="guetre" class="control-label col-sm-6" style="text-align: left">Gaiters</label>
+          <div class="col-sm-6">
+            <div class="btn-group" data-toggle="buttons">
+              <label class="btn btn-primary" id="yesGuetre">
+                <input type="radio" name="guetre" value="yes" autocomplete="off"> Yes
+              </label>
+              <label class="btn btn-primary active" id="noGuetre">
+                <input type="radio" autocomplete="off" checked> No
+              </label>
+            </div>
+          </div>
+          </div>
+          </div>
+          <div class="form-group">
+          <div class="row">
+              <label for="batons" class="control-label col-sm-6" style="text-align: left">Poles</label>
+          <div class="col-sm-6">
+            <div class="btn-group" data-toggle="buttons">
+              <label class="btn btn-primary" id="yesBatons">
+                <input type="radio" name="batons" value="yes" autocomplete="off"> Yes
+              </label>
+              <label class="btn btn-primary active" id="noBatons">
+                <input type="radio" autocomplete="off" checked> No
+              </label>
+            </div>
+          </div>
+          </div>
+          </div>
+          <div class="form-group">
+          <div class="row">
+              <label for="pioletGlace" class="control-label col-sm-6" style="text-align: left">Ice-climbing Axe</label>
+          <div class="col-sm-6">
+            <div class="btn-group" data-toggle="buttons">
+              <label class="btn btn-primary" id="yesPioletGlace">
+                <input type="radio" name="pioletGlace" value="yes" autocomplete="off"> Yes
+              </label>
+              <label class="btn btn-primary active" id="noPioletGlace">
+                <input type="radio" autocomplete="off" checked> No
+              </label>
+            </div>
+          </div>
+          </div>
+          </div>
+          <div class="form-group">
+          <div class="row">
+              <label for="sac" class="control-label col-sm-6" style="text-align: left">Backpack</label>
+          <div class="col-sm-6">
+            <div class="btn-group" data-toggle="buttons">
+              <label class="btn btn-primary" id="yesSac">
+                <input type="radio" name="sac" value="yes" autocomplete="off"> Yes
+              </label>
+              <label class="btn btn-primary active" id="noSac">
+                <input type="radio" autocomplete="off" checked> No
+              </label>
+            </div>
+          </div>
+          </div>
+          </div>
+        </form>  
+      </div>
+      <div class="col-sm-3">
+      </div>  
+    </div>
+  </div> <!-- Container Alpinism -->
+  
+  <div class="container" style="background-color: #DCDCDC">
+    <div class="row">
+      <div class="col-sm-12">
+       <img style="max-width:100%; padding-top: 20px;" src="{{ url_for('static', filename='images/climbi.jpg') }}">
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-4">
+         
+      </div>
+      <div class="col-sm-4">
+        <h3>ROCK CLIMBING</h3>
+            <div class="form-group">
+              <label><input type="checkbox" id="climbingShoes"> Climbing shoes</label> 
+            </div>
+            <div class="form-group">
+              <label for ="size">Size:</label> 
+              <select id="size">
+                <option value="36">EU 36 UK 3.5</option>
+                <option value="36.5">EU 36.5 UK 4</option>
+                <option value="37">EU 37 UK 4.5</option>
+                <option value="37.5">EU 37.5 UK 4.5</option>
+                <option value="38">EU 38 UK 5</option>
+                <option value="38.5">EU 38.5 UK 5.5</option>
+                <option value="39">EU 39 UK 6</option>
+                <option value="39.5">EU 39.5 UK 6</option>
+                <option value="40">EU 40 UK 6.5</option>
+                <option value="40.5">EU 40.5 UK 7</option>
+                <option value="41">EU 41 UK 7.5</option>
+                <option value="41.5">EU 41.5 UK 8</option>
+                <option value="42">EU 42 UK 8</option>
+                <option value="42.5">EU 42.5 UK 8.5</option>
+                <option value="43">EU 43 UK 9</option>
+                <option value="43.5">EU 43.5 UK 9.5</option>
+                <option value="44">EU 44 UK 9.5</option>
+                <option value="44.5">EU 44.5 UK 10</option>
+                <option value="45">EU 45 UK 10.5</option>
+                <option value="45.5">EU 45.5 UK 10.5</option>
+                <option value="46">EU 46 UK 11</option>
+                <option value="46.5">EU 46.5 UK 11.5</option>
+                <option value="47">EU 47 UK 11.5</option>
+                <option value="47.5">EU 47.5 UK 12</option>
+                <option value="48">EU 48 UK 12</option>
+                <option value="48.5">EU 48</option>
+                <option value="49">EU 49</option>
+                <option value="50">EU 50</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label><input type="checkbox" value="kid shoes"> Junior Climbing shoes</label> 
+            </div>
+            <div class="form-group">
+              <label><input type="checkbox" value="Helmet"> Helmet</label>
+            </div>
+            <div class="form-group">
+              <label><input type="checkbox" value="Harness"> Harness</label>
+            </div>
+            <div class="form-group">
+            <label><input type="checkbox" value="Crashpad"> Crashpad</label>
+            </div>
+      </div>
+      
+      <div class="col-sm-4">
+      </div>
+    </div>
+
+  </div> <!-- Container Rock -->
+  
+  <div class="container" style="background-color: #8FBC8B">
+    <div class="row">
+      <div class="col-sm-12">
+       <img style="max-width:100%; padding-top: 20px" src="{{ url_for('static', filename='images/hike.jpg') }}">
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-4">
+      </div>
+      <div class="col-sm-4">
+        <h3>HIKING</h3>
+              <label><input type="checkbox" id="hikingShoes">Hiking shoes</label> 
+            
+            <div class="form-group">
+              <label for ="size">Size:</label> 
+              <select id="size">
+                <option value="36">EU 36 UK 3.5</option>
+                <option value="36.5">EU 36.5 UK 4</option>
+                <option value="37">EU 37 UK 4.5</option>
+                <option value="37.5">EU 37.5 UK 4.5</option>
+                <option value="38">EU 38 UK 5</option>
+                <option value="38.5">EU 38.5 UK 5.5</option>
+                <option value="39">EU 39 UK 6</option>
+                <option value="39.5">EU 39.5 UK 6</option>
+                <option value="40">EU 40 UK 6.5</option>
+                <option value="40.5">EU 40.5 UK 7</option>
+                <option value="41">EU 41 UK 7.5</option>
+                <option value="41.5">EU 41.5 UK 8</option>
+                <option value="42">EU 42 UK 8</option>
+                <option value="42.5">EU 42.5 UK 8.5</option>
+                <option value="43">EU 43 UK 9</option>
+                <option value="43.5">EU 43.5 UK 9.5</option>
+                <option value="44">EU 44 UK 9.5</option>
+                <option value="44.5">EU 44.5 UK 10</option>
+                <option value="45">EU 45 UK 10.5</option>
+                <option value="45.5">EU 45.5 UK 10.5</option>
+                <option value="46">EU 46 UK 11</option>
+                <option value="46.5">EU 46.5 UK 11.5</option>
+                <option value="47">EU 47 UK 11.5</option>
+                <option value="47.5">EU 47.5 UK 12</option>
+                <option value="48">EU 48 UK 12</option>
+                <option value="48.5">EU 48</option>
+                <option value="49">EU 49</option>
+                <option value="50">EU 50</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label><input type="checkbox" value="Poles"> Poles</label>
+            </div>
+            <div class="form-group">
+              <label><input type="checkbox" value="Crampons"> Crampons</label>
+            </div>
+            <div class="form-group">
+              <label><input type="checkbox" value="Backpack"> Backpack</label>
+            </div>
+            <div class="form-group">
+              <label><input type="checkbox" value="BabyCarrier"> Baby Carrier</label>
+            </div>
+      </div>
+      <div class="col-sm-4">
+      </div>
+    </div>
+  </div> <!-- Container Hiking -->
+
+  <div class="container" style="background-color: #FFDAB9">
+    <div class="row">
+          <div class="col-sm-12">
+           <img style="max-width:100%; padding-top: 20px" src="{{ url_for('static', filename='images/slack.jpg') }}">
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-sm-4">
+          </div>
+          <div class="col-sm-4">
+            <h3>OTHERS</h3>
+            <div class="form-group">
+              <label><input type="checkbox" value="BabyCarrier"> Baby Carrier</label>
+            </div>
+            <div class="form-group">
+              <label><input type="checkbox" value="Stroller"> Stroller</label>
+            </div>
+            <div class="form-group">
+              <label><input type="checkbox" value="Shock Absorber"> Via Ferrata shock absorber</label>
+            </div>
+            <div class="form-group">
+              <label><input type="checkbox" value="Slackline"> Slackline</label>
+            </div>
+          </div>
+          <div class="col-sm-4">
+          </div>
+        </div>
+  </div> <!-- Container Others -->
+      
+  
+  <div class="container" style="padding-top: 20px">
+    <div class="row">
+     <div class="col-sm-4">
+      </div>
+        <div class="col-sm-4">
+          <div class="form-group">
+            <label for ="comment">Comment:</label>
+            <textarea class="form-control" rows="5" id="comment"></textarea>
+          </div>
+        </div>
+     <div class="col-sm-4">
+     </div>
+    </div>
+   </div>
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-4">
+      </div>
+      <div class="col-sm-4"> 
+      <input type="submit" class="btn btn-success btn-block">
+</form>
+       
+      </div>
+      <div class="col-sm-4"> 
+      </div>
+    </div> 
+  </div>
+
+{% endblock %}   

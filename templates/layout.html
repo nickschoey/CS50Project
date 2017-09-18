@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- BOOTSTRAP CHECKBOX -->
+  <link href="{{ url_for('static', filename='css/checkbox.css') }}" rel="stylesheet">
+  <link href="{{ url_for('static', filename='css/ds-btn.css') }}" rel="stylesheet">
+  <link href="{{ url_for('static', filename='css/bootstrap.css') }}" rel="stylesheet">
+  <link href="{{ url_for('static', filename='css/intlTelInput.css') }}" rel="stylesheet">
+  <link href="{{ url_for('static', filename='css/mycss.css') }}" rel="stylesheet">
+  <link href="{{ url_for('static', filename='css/daterangepicker.css') }}" rel="stylesheet">
+  <link href="{{ url_for('static', filename='css/animCheckbox.css') }}" rel="stylesheet">
+  <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.15/css/dataTables.bootstrap.min.css"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.3/css/bootstrap-select.min.css">
+  <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
+  <link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet'>
+  <link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}">
+
+  <title>Sssr {% block title %}{% endblock %}</title>
+
+
+</head>
+
+
+
+<body {% block body %} {% endblock %}>
+
+  <script src="{{ url_for('static', filename='js/jquery-3.2.1.js') }}"></script>
+  <!--<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>-->
+  <script src="{{ url_for('static', filename='js/moment.js') }}"></script>
+  <!--<script type="text/javascript" src="//cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>-->
+  <script type="text/javascript" src="{{ url_for('static', filename='js/bootstrap.js') }}"></script>
+  <!-- app's own JavaScript -->
+   <script src="{{ url_for('static', filename='js/prices.js') }}"></script>
+  <script src="{{ url_for('static', filename='js/calPrices.js') }}"></script>
+  <script src="{{ url_for('static', filename='js/eraseAll.js') }}"></script>
+  <script src="{{ url_for('static', filename='js/scripts.js') }}"></script>
+  <script src="{{ url_for('static', filename='js/intlTelInput.js') }}"></script>
+  <script src="{{ url_for('static', filename='js/utils.js') }}"></script>
+  <script type="text/javascript" src="https://cdn.datatables.net/1.10.15/js/jquery.dataTables.min.js"></script>
+  <script type="text/javascript" src="https://cdn.datatables.net/1.10.15/js/dataTables.bootstrap.min.js"></script>
+  <script src="{{ url_for('static', filename='js/daterangepicker.js') }}"></script>
+  <script src="{{ url_for('static', filename='js/gearIcons.js') }}"></script>
+  <script src="{{ url_for('static', filename='js/loadDoc.js') }}"></script>
+  <script src="{{ url_for('static', filename='js/loadDocAdmin.js') }}"></script>
+  <script src="{{ url_for('static', filename='js/test.js') }}"></script>
+  <script src="{{ url_for('static', filename='js/tether.js') }}"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.3/js/bootstrap-select.min.js"></script>
+  <!-- Include Date Range Picker -->
+  <!--<script type="text/javascript" type="text/javascript" src="//cdn.jsdelivr.net/bootstrap.daterangepicker/2/daterangepicker.js"></script>
+  <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/bootstrap.daterangepicker/2/daterangepicker.css" />
+  <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/bootstrap.daterangepicker/2/daterangepicker.css" />-->
+  
+<!-- BOOTSTRAP SELECT-->
+
+
+
+
+
+<div class="container-fluid" style="background-color: black ;color:#fff; height:75px;">
+  <h1>Sports Shop rental</h1>
+</div>
+ <nav class="navbar navbar-inverse" style="width: 100%; z-index: 35;" data-offset-top="75">
+
+  <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="#">Sports Shop</a>
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav">
+        <li class="active"><a href="#">Rentals<span class="sr-only">(current)</span></a></li>
+        <li><a href="#">Online Shop</a></li>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Other<span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><a href="#">Hotels</a></li>
+            <li><a href="#">Lifts</a></li>
+            <li><a href="#">Ski school</a></li>
+            <li role="separator" class="divider"></li>
+            <li><a href="#">Weather Forecast</a></li>
+            <li role="separator" class="divider"></li>
+            <li><a href="#">Contact</a></li>
+          </ul>
+        </li>
+      </ul>
+
+      <ul class="nav navbar-nav navbar-right">
+
+      {% if session.logged_in %}
+
+        <li><a href="/dashboard">Home</a></li>
+        <li><a href="/logout">Logout</a></li>
+        <li><a href="/faq">FAQ</a></li>
+        <li><a data-toggle="modal" data-target="#infoPrices">Price list</a></li>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">{{username}} <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><a href="/front"><span class="glyphicon glyphicon-pencil"></span> New reservation</a></li>
+            <li><a href="#"><span class="glyphicon glyphicon-list"></span> History/Modify</a></li>
+            <li role="separator" class="divider"></li>
+            <li><a href="#"><span class="glyphicon glyphicon-cog"></span> Settings</a></li>
+          </ul>
+        </li>
+      
+      {% else %}
+
+        <li><a data-toggle="modal" data-target="#infoPrices">Price list</a></li>
+        <li><a href="/faq">FAQ</a></li>
+        <li><a href="/">Log In</a></li>
+        <li><a href="/register">Sign Up</a></li>
+
+      {% endif %}
+      
+      </ul>
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav>
+
+{% include 'prices2.html' %}
+
+{% with messages = get_flashed_messages() %}
+
+  {% if messages %}
+  <div class="container">
+    {% for message in messages %}
+      <div class="alert alert-warning alert-dissmissible" role="alert">
+      <button type="button" class="close" data-dismiss="alert" aria-label="close"><span aria-hidden="true">&times;</span></button>
+      {{message}}
+  </div>
+    {% endfor %}
+  </div>
+  {% endif %}
+
+{% endwith %}
+
+
+
+{% block main %}
+
+{% endblock %}
+
+</body>
+</html>

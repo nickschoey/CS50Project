@@ -1,0 +1,60 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Register
+{% endblock %}
+
+{% block body %}
+style= "background-color: #000000; background-image: url('static/images/splash.jpg'); background-repeat: no-repeat; background-position: center"
+{% endblock %}
+
+
+{% block main %}
+
+<div class="container">
+	<div class="col-sm-3">
+	</div>
+  
+	<div class="col-sm-6">
+		<div class="jumbotron">
+		<div class="row">
+     		<h1 class="text-center" style="color: white">Register</h1>
+		</div>
+		
+		{% from "_formhelpers.html" import render_field %}
+		<form method="post" action="/register">
+
+				{{render_field(form.fullname)}}
+
+				{{render_field(form.username)}}
+
+				{{render_field(form.email)}}
+			  
+				{{render_field(form.password)}}
+			  
+				{{render_field(form.confirm)}}
+			  
+			<div class="form-check" style="color: white"> <!-- Div closes inside the macro!!! -->
+				{{render_field(form.accept_tos)}}
+			
+
+
+			<div class="form-group">
+			<input class="btn btn-success btn-lg" type="submit" value="Register" style="width: 100%">
+			</div>
+			
+
+		</form>
+
+		{% if error %}
+			<p style="color: white" class="error"><strong>Error:</strong>{{error}}</p>
+		{%  endif %}
+		</div>
+	</div>
+	<div class="col-sm-3">
+	</div>
+
+
+
+
+{% endblock %}

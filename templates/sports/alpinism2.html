@@ -1,0 +1,231 @@
+  <div id="alpinism" class="tab-pane fade in active">
+    <div class="container" style="background-color: rgba(0,0,0,0.3);">
+          <h3 class="text-center" style="color: white"></h3><br>
+    <div class="row">
+        <div class="col-sm-6">
+
+              <div class="[ form-group ]">
+               <div class="checkbox">
+              <i class="fa fa-info fa-2x" style="color: white" data-toggle="modal" data-target="#gfd"></i>
+                  <label style="font-size: 2em; color: white">
+                      <input type="checkbox" name="montBlancPack" id="mBlancPack" value="1">
+                      <span class="cr"><i class="cr-icon fa fa-check"></i></span>
+                      Mont-Blanc Pack
+                  </label>
+                  <label style="color: white" id="mBlancPackPrice" style="display: none" disabled>
+                  </label>
+              </div>
+              </div>
+              </div>
+              <input type="hidden" value="0" name="alpinismShoes">
+
+              <div class="[ form-group ]">
+               <div class="checkbox">
+              <i class="fa fa-info fa-2x" style="color: white" data-toggle="modal" data-target="#infoShoes"></i>
+                  <label style="font-size: 2em; color: white">
+                      <input type="checkbox" name="alpinismShoes" id="alpinismShoes" value="1">
+                      <span class="cr"><i class="cr-icon fa fa-check"></i></span>
+                      Alpinism Shoes
+                  </label>
+                  <label style="color: white" id="mBlancPackPrice" style="display: none" disabled>
+                  </label>
+                <span class="help-block" style="color: white">Includes Mountaineering Boots, Crampons, Ice Axe, Helmet and Harness</span>
+              </div>
+              </div>
+              </div>
+              <input type="hidden" value="0" name="montBlancPack">
+
+
+
+
+
+
+
+
+
+
+              
+
+            <div class="form-group has-warning has-feedback" id="shoeSize" style="display: none">
+              <select id="size" name="alpinismShoeSize" class="selectpicker show-tick" id="size" title="Shoe size" data-width="auto">
+                <optgroup label="Women's">
+                  <option value="36" data-subtext="UK 3.5 US 5.5">EU 36</option>
+                  <option value="36.5" data-subtext="UK 4 US 6">EU 36.5</option>
+                  <option value="37" data-subtext="UK 4.5 US 6.5">EU 37</option>
+                  <option value="37.5" data-subtext="UK 5 US 7">EU 37.5</option>
+                  <option value="38" data-subtext="UK 5.5 US 7.5">EU 38</option>
+                  <option value="38.5" data-subtext="UK 6 US 8">EU 38.5</option>
+                  <option value="39" data-subtext="UK 6.5 US 8.5">EU 39</option>
+                  <option value="39.5" data-subtext="UK 7 US 9">EU 39.5</option>
+                  <option value="40" data-subtext="UK 7.5 US 9.5">EU 40</option>
+                  <option value="40.5" data-subtext="UK 8 US 10.5">EU 40.5</option>
+                </optgroup>
+                <optgroup label="Men's">
+                  <option value="41" data-subtext="UK 7.5 US 8">EU 41</option>
+                  <option value="41.5" data-subtext="UK 8 US 8.5">EU 41.5</option>
+                  <option value="42" data-subtext="UK 8.5 US 9">EU 42</option>
+                  <option value="42.5" data-subtext="UK 9 US 9.5">EU 42.5</option>
+                  <option value="43" data-subtext="UK 9.5 US 10">EU 43</option>
+                  <option value="43.5" data-subtext="UK 10 US 10.5">EU 43.5</option>
+                  <option value="44" data-subtext="UK 10.5 US 11">EU 44</option>
+                  <option value="44.5" data-subtext="UK 11 US 11.5">EU 44.5</option>
+                  <option value="45" data-subtext="UK 11.5 US 12">EU 45</option>
+                  <option value="45.5" data-subtext="UK 12 US 12.5">EU 45.5</option>
+                  <option value="46" data-subtext="UK 12.5 US 13">EU 46</option>
+                  <option value="46.5" data-subtext="UK 13 US 13.5">EU 46.5</option>
+                  <option value="47" data-subtext="UK 13.5 US 14">EU 47</option>
+                  <option value="47.5" data-subtext="UK 14 US 14.5">EU 47.5</option>
+                  <option value="48" data-subtext="UK 14.5 US 15">EU 48</option>
+                  <option value="48.5" data-subtext="UK 15 US 15.5">EU 48.5</option>
+                  <option value="49" data-subtext="UK 15.5 US 16">EU 49</option>
+                  <option value="50" data-subtext="UK 16.5 US 17">EU 50</option>
+                </optgroup>
+              </select>
+
+              <span class="glyphicon glyphicon-warning-sign form-control-feedback" id="wSize"></span>
+              <div class="alert alert-warning" id="infoSize">Please select your normal every-day shoe size</div>
+            </div>
+
+
+            <div class="[ form-group ]">
+                <input type="checkbox" name="crampons" id="crampons" value="1" autocomplete="off"/>
+                <div class="[ btn-group ]">
+                    <label for="crampons" id="cramponsLabel" class="btn btn-default btn-lg">
+                        <span class="[ glyphicon glyphicon-ok ]"></span>
+                        <span> </span>
+                    </label>
+                    <label style="width: 220px" for="crampons" id="cramponsLabel" class="btn btn-default btn-lg active  ">
+                        Crampons
+                    </label>
+                    <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#infoCrampons" aria-pressed="false">Info</button>
+                    <label class="btn btn-default btn-lg" id="cramponsPrice" style="display: none">
+                </div>
+              </div>
+              <input type="hidden" value="0" name="crampons">
+            
+
+
+            <div class="[ form-group ]">
+                <input type="checkbox" name="piolet" id="piolet" value="1" autocomplete="off"/>
+                <div class="[ btn-group ]">
+                    <label for="piolet" id="pioletLabel" class="btn btn-default btn-lg">
+                        <span class="[ glyphicon glyphicon-ok ]"></span>
+                        <span> </span>
+                    </label>
+                    <label style="width: 220px" for="piolet"  id="pioletLabel" class="btn btn-default btn-lg active">
+                        Touring Ice Axe
+                    </label>
+                    <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#infoPiolet" aria-pressed="false">Info</button>
+                    <label class="btn btn-default btn-lg" id="pioletPrice" style="display: none">
+                </div>
+              </div>
+              <input type="hidden" value="0" name="piolet">
+
+        </div>
+        <div class="col-sm-6">
+            <div class="[ form-group ]">
+                <input type="checkbox" name="casque" id="casque" value="1" autocomplete="off"/>
+                <div class="[ btn-group ]">
+                    <label for="casque" id="casqueLabel" class="btn btn-default btn-lg">
+                        <span class="[ glyphicon glyphicon-ok ]"></span>
+                        <span> </span>
+                    </label>
+                    <label style="width: 220px" for="casque" id="casqueLabel" class="btn btn-default btn-lg active">
+                        Helmet
+                    </label>
+                    <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#infoCasque" aria-pressed="false">Info</button>
+                    <label class="btn btn-default btn-lg" id="casquePrice" style="display: none">
+                </div>
+              </div>
+              <input type="hidden" value="0" name="casque">
+
+
+
+            <div class="[ form-group ]">
+                <input type="checkbox" name="harness" id="harness" value="1" autocomplete="off"/>
+                <div class="[ btn-group ]">
+                    <label for="harness" id="harnessLabel" class="btn btn-default btn-lg">
+                        <span class="[ glyphicon glyphicon-ok ]"></span>
+                        <span> </span>
+                    </label>
+                    <label style="width: 220px" for="harness" id="harnessLabel" class="btn btn-default btn-lg active">
+                        Harness
+                    </label>
+                    <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#infoHarness" aria-pressed="false">Info</button>
+                    <label class="btn btn-default btn-lg" id="harnessPrice" style="display: none">
+                </div>
+              </div>
+              <input type="hidden" value="0" name="harness">
+
+              <div class="[ form-group ]">
+                <input type="checkbox" name="gaiters" id="gaiters" value="1" autocomplete="off"/>
+                <div class="[ btn-group ]">
+                    <label for="gaiters" class="btn btn-default btn-lg">
+                        <span class="[ glyphicon glyphicon-ok ]"></span>
+                        <span> </span>
+                    </label>
+                    <label style="width: 220px" for="gaiters" class="btn btn-default btn-lg active">
+                        Gaiters
+                    </label>
+                    <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#infoGaiters" aria-pressed="false">Info</button>
+                    <label class="btn btn-default btn-lg" id="gaitersPrice" style="display: none">
+                    </label>
+                </div>
+              </div>
+              <input type="hidden" value="0" name="gaiters">
+
+              <div class="[ form-group ]">
+                <input type="checkbox" name="poles" id="poles" value="1" autocomplete="off"/>
+                <div class="[ btn-group ]">
+                    <label for="poles" class="btn btn-default btn-lg">
+                        <span class="[ glyphicon glyphicon-ok ]"></span>
+                        <span> </span>
+                    </label>
+                    <label style="width: 220px" for="poles" class="btn btn-default btn-lg active">
+                        Hiking Poles
+                    </label>
+                    <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#infoPoles" aria-pressed="false">Info</button>
+                    <label class="btn btn-default btn-lg" id="polesPrice" style="display: none">
+                </div>
+              </div>
+              <input type="hidden" value="0" name="poles">
+
+              <div class="[ form-group ]">
+                <input type="checkbox" name="pioletGlace" id="pioletGlace" value="1" autocomplete="off"/>
+                <div class="[ btn-group ]">
+                    <label for="pioletGlace" class="btn btn-default btn-lg">
+                        <span class="[ glyphicon glyphicon-ok ]"></span>
+                        <span> </span>
+                    </label>
+                    <label style="width: 220px" for="pioletGlace" class="btn btn-default btn-lg active">
+                        Ice-Climbing Axes x2
+                    </label>
+                    <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#infoPioletGlace" aria-pressed="false">Info</button>
+                    <label class="btn btn-default btn-lg" id="pioletGlacePrice" style="display: none">
+                </div>
+              </div>
+              <input type="hidden" value="0" name="pioletGlace">
+
+
+              <div class="[ form-group ]">
+                <input type="checkbox" name="backpack" id="backpack" value="1" autocomplete="off"/>
+                <div class="[ btn-group ]">
+                    <label for="backpack" class="btn btn-default btn-lg">
+                        <span class="[ glyphicon glyphicon-ok ]"></span>
+                        <span> </span>
+                    </label>
+                    <label style="width: 220px" for="backpack" class="btn btn-default btn-lg active">
+                        Alpinism Backpack 
+                    </label>
+                    <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#infoBackpack" aria-pressed="false">Info</button>
+                    <label class="btn btn-default btn-lg" id="backpackPrice" style="display: none"></label>
+                </div>
+              </div>
+              <input type="hidden" value="0" name="backpack">
+
+            </div><!--div class="col 6"-->
+
+      </div><!--div class="col-sm-6"-->
+    </div><!--div class="row"-->
+   </div> <!-- Container Alpinism -->
+

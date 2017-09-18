@@ -1,0 +1,129 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Select Gear
+{% endblock %}
+
+{% block body %}
+
+style= "background-color: #000000; background-image: url('../static/images/splash.jpg'); background-repeat: no-repeat; background-size: cover"
+
+{% endblock %}
+
+
+{% block main %}
+
+<div class="container">
+<div class="jumbotron">
+    <div class="row" style="text-align: center; color: white">
+        <h1>Reservation History</h1>
+    </div>
+    <div class="row">
+        <a href="{{ url_for('dashboard') }}" class="btn btn-lg btn-danger" role="button">Back</a>
+    </div>
+    <div class="row">
+    <table id="history" class="table order-column" width="100%" cellspacing="0" style="color: white">
+        <thead>
+            <tr>
+                <th></th>
+                <th> ID</th>
+                <th> Created</th>
+                <th> Start</th>
+                <th> End</th>
+                <th> People</th>
+                <th> Total</th>
+                <th> Status</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for resa in data %}
+            <tr>
+                <td><button type="button" data-toggle="modal" data-target="#resaUniModal" id ={{resa.resa_id}} onclick="loadDocAdmin(this.id)">Info</button></td>
+                <td>{{resa.resa_id}}</td>
+                <td>{{resa.creationdate.strftime('%-d %b %Y')}}</td>
+                <td>{{resa.datestart.strftime('%-d %b %Y')}}</td>
+                <td>{{resa.dateend.strftime('%-d %b %Y')}}</td>
+                <td>{{resa.people}}</td>
+                <td>{{resa.total}}€</td>
+                {% if resa.status == 0 %}
+                <td><i class="fa fa-question fa-2x" aria-hidden="true" data-toggle='tooltip' title='Inactive'></i></td>
+                {% elif resa.status == 1 %}
+                <td><i class="fa fa-square-o fa-2x" aria-hidden="true" data-toggle='tooltip' title='Awaiting Confirmation'></i></td>
+                {% elif resa.status == 2 %}
+                <td><i class="fa fa-check-square-o fa-2x" aria-hidden="true" data-toggle='tooltip' title='Confirmed!'></i></td>
+                {% elif resa.status == 3 %}
+                <td><i class="fa fa-ban fa-square-o fa-2x text-danger" aria-hidden="true" data-toggle='tooltip' title='Refused reservation'></i></td>
+                {% elif resa.status == 4 %}
+                <td><i class="fa fa-trash-o fa-2x" aria-hidden="true" data-toggle='tooltip' title='Deleted'></i></td>
+                {% elif resa.status == 5 %}
+                <td><i class="fa fa-archive fa-2x" aria-hidden="true" data-toggle='tooltip' title='Archived'></i></td>
+                {% else %}
+                <td>uops</td>
+                {% endif %}
+
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    </div>
+</div>
+</div>
+
+
+<div class="modal fade" id="resaUniModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+      <div class="col-sm-10">
+       <h3 class="modal-title" id="resaUniTitleAdmin"></h3>
+       <h5 class="modal-title" id="resaUniSubtitleAdmin"></h5>
+       </div>
+       <div class="col-sm-2" id="status">
+          
+            <em class="fa fa-trash fa-4x"></em>
+          
+        </div>
+       </div>
+       <div class="modal-body" >
+
+       <div class="row">
+            <div class="col-sm-6">
+            <div id="resaUniAdminContent" class="modalAdminInfo"> </div>
+
+            </div>
+            <div class="col-sm-6">
+            <div id="resaUniAdminContentRight" class="modalAdminInfo"></div>
+            </div>
+        </div>  
+            <div class="row">
+                <div class ="col-sm-12 modalAdminInfo" id="resaUniAdminContentLow"></div> 
+            </div> 
+
+            <table class="table">
+                <thead>
+                    <th> <img class="historyIcon" data-toggle="tooltip" title="Name" src="{{ url_for('static', filename='images/icons/user.png') }}" alt="Name"></th>
+                    <th> <img class="historyIcon" data-toggle="tooltip" title="Total" src="{{ url_for('static', filename='images/icons/euro.png') }}" alt="Total"></th>
+                </thead>
+                <tbody id="resaUniBodyAdmin" class="modalAdminInfo">
+                    
+                </tbody>
+                <tfoot id="resaUniFootAdmin" class="modalAdminInfo">
+                    
+                </tfoot>
+            </table>
+
+       </div>
+       <div class="modal-footer">
+        
+            <div class="col-sm-5" style="text-align: left">
+          </div>
+            <div class="col-sm-7">
+          <button type="button" class="btn btn-secondary btn-lg" data-dismiss="modal">Close</button>
+            </div>
+
+          
+       </div>
+    </div>
+  </div>
+</div><!-- Modal -->
+{% endblock %}  

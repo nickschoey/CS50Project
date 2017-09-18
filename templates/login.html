@@ -1,0 +1,53 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Log in
+{% endblock %}
+
+{% block body %}
+style= "background-color: #000000; background-image: url('static/images/splash.jpg'); background-repeat: no-repeat; background-attachment: fixed; background-position: center"
+
+{% endblock %}
+
+
+{% block main %}
+
+<div class="container">
+	<div class="col-sm-3">
+	</div>
+  
+	<div class="col-sm-6">
+	<div class="jumbotron text-center">
+	     	<h1 class="text-center" style="color: white">Log In</h1>
+			<form action="" class="form-horizontal" method="post">
+				<div class="form-group"  style="opacity: 1">
+				  <div class="input-group input-group-lg">
+				  	<span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+					<input type="text" name="username" class="form-control" placeholder="Username" value="{{request.form.username}}">
+				  </div>
+				</div>
+				<div class="form-group">
+				  <div class="input-group input-group-lg">
+				  	<span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
+					<input type="password" name="password" class="form-control" placeholder="Password" value="{{request.form.password}}">
+				  </div>
+				</div>
+	  			<p style="color: white">{{error}}</p> 
+				
+				<div class="form-group">
+
+				  <input class="btn btn-success btn-lg " type="submit" value="Log in" style="width: 60%; font-weight: bold">
+				</div>
+			</form>
+			<p class="text-center" style="color:#0069ff; font-size: 17px; font-family: "proxima-nova", helvetica;>Forgot password?</p>
+			<p class="text-center" style="color: white; font-size: 15px">Don't have an account? <a href="/register"><b>Register!</b></a></p>
+	</div>
+	</div>
+	<div class="col-sm-3">
+	</div>
+</div>
+
+
+</div>
+
+{% endblock %}

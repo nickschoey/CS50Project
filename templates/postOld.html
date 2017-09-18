@@ -1,0 +1,197 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Select Gear
+{% endblock %}
+
+{% block body %}
+
+style= "background-color: #000000; background-image: url('../static/images/splash.jpg'); background-repeat: no-repeat; background-size: cover"
+
+{% endblock %}
+
+{% block main %}
+<div class="container">
+
+<div class="jumbotron" style="background-color: rgba(0,0,0,0.3)">
+	<h1 class="text-center" style="color: white"> Reservation Summary</h1>
+
+
+
+	<div class="container" >
+		 <div class="col-sm-3">
+		 	<div class="jumbotron" style="background-color: rgba(0,0,0,0.3); padding-left: 10px">
+			 <div class="form-group">
+			 <a class="btn btn-lg btn-primary" href="{{ url_for('gear') }}" style="margin-bottom: 5px">Add another person</a>
+			 <a class="btn btn-danger btn-lg" data-toggle="modal" data-target="#infoConfirm"> Finish Reservation </a>
+			 </div>
+
+		 	<p style="color: white"> {{count}} People</p>
+		 	<p style="color: white"> TOTAL: {{total}}€</p>
+		 	{% for resa in data %}
+		 	<p style="color: white"> - {{resa.name}}</p>
+		 	{% endfor%}
+		 	</div>
+		 </div>
+
+		 
+
+		 <div class="col-sm-6">
+
+
+		{% for resa in data %}
+			<div class="container" style="background-color: rgba(0,0,0,0.3)" >
+	  			<div class="panel-heading" style="color: white"><h3>{{resa.name}}</h3>
+	  			</div>
+	 			<div class="panel-body">
+	 				<ul class="list-group">
+		 			<li class="list-group-item list-group-item-warning"> {{resa.days}} day(s) from {{resa.datestart}} to {{resa.dateend}}</li>
+		 			{% if resa.mbPack %}
+			            <li>
+						<img class="historyIcon" data-toggle="tooltip" title="Mont-Blanc Pack" src="{{ url_for('static', filename='images/icons/mountain.png') }}" alt="Mont-Blanc Pack"><b>Mont-Blanc Pack</b></li>
+						<li class="list-group-item"><i>Alpinism Shoes. Size: {{resa.alpBootSize}}</i>
+
+						</li>
+						<li class="list-group-item"><i>Crampons</i>
+						<img class="historyIcon" data-toggle="tooltip" title="Crampons" src="{{ url_for('static', filename='images/icons/crampons.png') }}" alt="Crampons"></li>
+						<li class="list-group-item"><i>Touring Ice Axe</i></li>
+						<li class="list-group-item"><i>Helmet</i></li>
+						<li class="list-group-item"><i>Harness</i></li>
+            		{% endif %}
+            		{% if resa.gaillandKit %}
+			            <li class="list-group-item list-group-item-info"><b>Les Gaillands Pack</b></li>
+						<li class="list-group-item"><i>Climbing Shoes</i></li>
+						<li class="list-group-item"><i>Helmet</i></li>
+						<li class="list-group-item"><i>Harness</i></li>
+            		{% endif %}
+            		{% if resa.viaFerrataKit %}
+			            <li class="list-group-item list-group-item-info"><b>Les Evettes Pack</b></li>
+						<li class="list-group-item"><i>Via Ferrata Shock Absorber</i></li>
+						<li class="list-group-item"><i>Helmet</i></li>
+						<li class="list-group-item"><i>Harness</i></li>
+            		{% endif %}
+
+		            	{% if resa.alpBoots %}
+			            <li class="list-group-item">- Alpinism Boots. Size: {{resa.alpBootSize}} </li>
+						{% endif %}
+
+	            		{% if resa.crampons %}
+			            <li class="list-group-item">- Crampons </li>
+						{% endif %}
+
+						{% if resa.iceAxe %}
+			            <li class="list-group-item">- Touring Ice Axe </li>
+						{% endif %}
+
+						{% if resa.helmet %}
+			            <li class="list-group-item">- Helmet </li>
+						{% endif %}
+
+			            {% if resa.harness %}
+			            <li class="list-group-item">- Harness </li>
+						{% endif %}
+
+			            {% if resa.gaiters %}
+	            		<li class="list-group-item">- Gaiters</li> 
+	            		{% endif %}
+
+	            		{% if resa.poles %}
+	            		<li class="list-group-item">- Hiking Poles</li> 
+	            		{% endif %}
+
+	            		{% if resa.techIceAxes %}
+	            		<li class="list-group-item">- Technical Ice Axes</li>
+			            {% endif %}
+	            		
+	            		{% if resa.iceCrampon %}
+	            		<li class="list-group-item">- Ice-Climbing Crampons</li>
+	            		{% endif %}
+	            		
+	            		{% if resa.backpack %}
+	            		<li class="list-group-item">- Backpack</li>
+	            		{% endif %}
+
+	            		{% if resa.climbingShoes %}
+	            		<li class="list-group-item">- Climbing Shoes</li>
+	            		{% endif %}
+			            
+			            {% if resa.kidClimbingShoes %}
+	            		<li class="list-group-item">- Kid Climbing Shoes</li>
+	            		{% endif %}
+
+	            		{% if resa.viaFerrataShock %}
+	            		<li class="list-group-item">- Via Ferrata Shock Absorber</li>
+	            		{% endif %}
+
+	            		{% if resa.crashpad %}
+	            		<li class="list-group-item">- Crashpad</li>
+	            		{% endif %}
+
+	            		{% if resa.slackline %}
+	            		<li class="list-group-item">- Slackline</li>
+	            		{% endif %}
+
+	            		{% if resa.hikingShoes %}
+	            		<li class="list-group-item">- Hiking Shoes</li>
+	            		{% endif %}
+
+	            		{% if resa.babyCarrier %}
+	            		<li class="list-group-item">- Baby Carrier</li>
+	            		{% endif %}
+
+	            		{% if resa.stroller %}
+	            		<li class="list-group-item">- Baby Stroller</li>
+	            		{% endif %}
+
+
+						<li class="list-group-item list-group-item-warning">TOTAL for {{resa.name}}: <b>{{resa.price}} €</b></li>
+					</ul>
+				</div>
+			</div>
+			{% endfor %}
+
+			
+
+		</div>
+		<div class="col-sm-3">
+		 </div>
+</div>
+</div>
+
+
+<div class="modal fade" id="infoConfirm" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+			<form method="POST">
+			  <div class="modal-dialog" role="document">
+			    <div class="modal-content">
+			      <div class="modal-header">
+			       <h3 class="modal-title" id="exampleModalLabel">ONE LAST STEP...</h3>
+			       </div>
+			       
+			       <div class="modal-body">
+			        <div class="form-group">
+			          <label for="comment">Tell us a little bit more about what you plan to do, where you are going or any other special request so we can provide the best service:</label>
+			          <textarea class="form-control" rows="5" id="comment" name="comment"></textarea>
+			       </div>
+
+			       <div class="form-group">
+			        <label for="demo"> Please provide a contact telephone number:</label>
+			        <input type="tel" id="demo" name="demo" placeholder="" onchange="countryCode()" required>
+			       </div>
+			        <input type="tel" id="telephone" name="telephone" placeholder="" style="display: none">
+
+			      <p> After this step your reservation will be finished but not yet confirmed. We will confirm it within the next 24 hours by email</p><br>
+			      <p> If there are changes to be made, we will handle them once you come to the shop </p><br>
+			      <p> Your reservation and the status of it will also show on the history section of your account.</p><br>
+			      <p> Thank you for reserving with Sports Shop!</p>
+
+			       </div>
+
+			       <div class="modal-footer">
+			          <input type="submit" class="btn btn-danger btn-lg" value="Finish reservation">
+			 	   </div>
+				</div>
+			  </div>
+			</form>
+</div><!-- Modal -->
+
+{% endblock %}  

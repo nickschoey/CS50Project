@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="{{ url_for('static', filename='css/bootstrap.css') }}" rel="stylesheet">
+  <link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}">
+  <title>Alpinism gear rental</title>
+</head>
+
+<header>
+  
+  <div class="navbar-header">
+    <a class="navbar-brand" href="/">
+    <img style="max-width:120px;  margin-top: -7;" src="{{ url_for('static', filename='images/alpinist.jpg') }}">
+  </div>
+  <div class="container-fluid">
+
+      <a href="/dashboard/"><button type="button" class="btn btn-default" aria-label="Left Align" style="margin-top: 5px; margin-bottom: 5px; height: 44px; margin-right: 15px">
+        <span class="glyphicon glyphicon-user" aria-hidden="true"></span> Login
+      </button></a>
+
+  <ul class="nav navbar-nav navbar-right">
+  <!-- Button trigger modal -->
+    <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">
+      Launch demo modal
+    </button>
+
+    <!-- Modal -->
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <h4 class="modal-title" id="myModalLabel">Modal title</h4>
+          </div>
+          <div class="modal-body">
+            ...
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-primary">Save changes</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </ul>
+</div>
+</header>
+
+<body>
+  <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+  <script type="text/javascript" src="{{ url_for('static', filename='js/bootstrap.js') }}"></script>
+
+
+
+
+  <div class="container" style="background-color: #e6faff">
+    <h1>Gear Rental</h1>
+    <div class="row">
+      <div class="col-sm-6">
+    	  <form class="form-horizontal">
+          <div class="form-group">
+      		  <label for="InputName">First Name:</label>
+      		  <input type="text" class="form-control" id="InputName" placeholder="First Name">
+          </div>
+          <div class="form-group">
+            <label for="InputLastName">Last Name:</label>
+            <input type="text" class="form-control" id="InputLastName" placeholder="Last Name">
+          </div>
+          <div class="form-group">
+            <label for="InputName">Email Adress:</label>
+            <input type="email" class="form-control" id="InputEmail" placeholder="Email adress">
+          </div>
+          <div class="form-group">
+            <label for ="People">Number of people:</label> 
+            <select name="people" id="People">
+              <option value="1">1</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+              <option value="4">4</option>
+              <option value="5">5</option>
+              <option value="6">6</option>
+              <option value="7">7</option>
+              <option value="8">8</option>
+              <option value="9">9</option>
+              <option value="10">10</option>
+              <option value="11">11</option>
+          </select>
+         </div>
+       </form>
+      </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-4">
+        </div>
+       <div class="col-sm-4">
+          <div class="form-group">
+            First day: <input type="date" name="firstDay"><br>
+            Last day: <input type="date" name="lastDay">
+          </div>
+       </div>
+       <div class="col-sm-4">
+       </div> 
+    </div>
+      <div class="row">
+          <div class="col-sm-12">
+           <img style="max-width:100%" src="{{ url_for('static', filename='images/alpinist.jpg') }}">
+          </div>
+      </div>
+
+    <div class="row">
+      <div class="col-sm-4">
+      </div>
+      <div class="col-sm-4">
+        <h3>ALPINISM</h3>
+        <form>
+            <input type="checkbox" value="Boots">Alpinism boots 
+            <div class="shoesize">
+             Size <input type="number" name="shoesize" min="36" max="50" step="0.5">
+            </div>
+            <input type="checkbox" value="Crampons">Crampons<br>
+            <input type="checkbox" value="Ice axe">Ice axe<br>
+            <input type="checkbox" value="Helmet">Helmet<br>
+            <input type="checkbox" value="Gaiters">Gaiters<br>
+            <input type="checkbox" value="Harness">Harness<br>
+            <input type="checkbox" value="Mont-Blanc Pack" data-toggle="tooltip" title="Shoes+Crampons+Ice Axe+Helmet+Harness">Mont-Blanc Pack<br>
+            <input type="checkbox" value="Poles">Poles<br>
+            <input type="checkbox" value="Technical Ice Axes">Technical Ice Axes(x2)<br>
+            <input type="checkbox" value="Backpack">Backpack<br>
+        </form>
+      </div>
+      <div class="col-sm-4">
+      </div>  
+    </div>
+    <div class="row">
+      <div class="col-sm-12">
+       <img style="max-width:100%" src="{{ url_for('static', filename='images/climbi.jpg') }}">
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-4">
+      </div>
+      <div class="col-sm-4">
+        <h3>ROCK CLIMBING</h3>
+        <form>
+            <input type="checkbox" value="shoes">Climbing shoes 
+            <div class="shoesize">
+             Size <input type="number" name="shoesize" min="36" max="50" step="0.5"><br>
+            </div>
+            <input type="checkbox" value="kid shoes">Junior Climbing shoes 
+            <div class="shoesize">
+             Size <input type="number" name="shoesize" min="36" max="50" step="0.5"><br>
+            </div>
+            <input type="checkbox" value="Helmet">Helmet<br>
+            <input type="checkbox" value="Harness">Harness<br>
+            <input type="checkbox" value="Crashpad">Crashpad<br>
+        </form>
+      </div>
+      <div class="col-sm-4">
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-sm-12">
+       <img style="max-width:100%" src="{{ url_for('static', filename='images/hike.jpg') }}">
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-4">
+      </div>
+      <div class="col-sm-4">
+        <h3>HIKING</h3>
+        <form>
+            <input type="checkbox" value="shoes">Hiking shoes 
+            <div class="shoesize">
+             Size <input type="number" name="shoesize" min="36" max="50" step="0.5"><br>
+            </div>
+            <input type="checkbox" value="Poles">Poles<br>
+            <input type="checkbox" value="Crampons">Crampons<br>
+            <input type="checkbox" value="Backpack">Backpack<br>
+            <input type="checkbox" value="BabyCarrier">Baby Carrier<br>
+        </form>
+      </div>
+      <div class="col-sm-4">
+      </div>
+    </div>
+
+    <div class="row">
+          <div class="col-sm-12">
+           <img style="max-width:100%" src="{{ url_for('static', filename='images/slack.jpg') }}">
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-sm-4">
+          </div>
+          <div class="col-sm-4">
+            <h3>OTHERS</h3>
+        <form>
+            <input type="checkbox" value="BabyCarrier">Baby Carrier<br>
+            <input type="checkbox" value="Stroller">Stroller<br>
+            <input type="checkbox" value="Shock Absorber">Via Ferrata shock absorber<br>
+            <input type="checkbox" value="Slackline">Slackline<br>
+        </form>
+          </div>
+          <div class="col-sm-4">
+          </div>
+        </div>
+      
+  </div>
+  
+  <div class="container">
+    <div class="row">
+     <div class="col-sm-12">
+      <div class="form-horizontal">
+        <div class="form-group">
+          <label for ="comment">Comment:</label>
+          <textarea class="form-control" rows="5" id="comment"></textarea>
+        </div>
+          <button type="button" class="btn btn-success">Submit</button>
+      </div>
+     </div> 
+    </div>   
+  </div>
+</body>
+</html>

@@ -1,0 +1,493 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Select Gear
+{% endblock %}
+
+
+{% block body %}
+
+style= "background-color: #000000; background-image: url('../static/images/splash.jpg'); background-repeat: no-repeat; background-size: cover"
+
+{% endblock %}
+
+{% block main %}
+
+<div class="container">
+<div class="jumbotron" style="background-color: rgba(0,0,0,0.6); padding-left: 10px; padding-right: 10px">
+
+<table class="table" style="color: white">
+    <thead>
+        <tr role="row">
+            <th> <img class="historyIcon" data-toggle="tooltip" title="Name" src="{{ url_for('static', filename='images/icons/user.png') }}" alt="Name"></th>
+            <th> <img class="historyIcon" data-toggle="tooltip" title="Mont-Blanc Pack" src="{{ url_for('static', filename='images/icons/mountain.png') }}" alt="Mont-Blanc Pack"></th>
+            <th> <img class="historyIcon" data-toggle="tooltip" title="Les Gaillands Pack" src="{{ url_for('static', filename='images/icons/climber.png') }}" alt="Les Gaillands Pack"></th>
+            <th> <img class="historyIcon" data-toggle="tooltip" title="Les Evettes Pack" src="{{ url_for('static', filename='images/icons/via ferrata.png') }}" alt="Les Evettes Pack"></th>
+            <th> <img class="historyIcon" data-toggle="tooltip" title="Mountaineering Boots" src="{{ url_for('static', filename='images/icons/boots.png') }}" alt="Mountaineering Boots"></th>
+            <th> <img class="historyIcon" data-toggle="tooltip" title="Mountaineering Boots size" src="{{ url_for('static', filename='images/icons/size.png') }}" alt="Mountaineering Boots size"></th>
+            <th> <img class="historyIcon" data-toggle="tooltip" title="Crampons" src="{{ url_for('static', filename='images/icons/crampons.jpg') }}" alt="Crampons"></th>
+            <th> <img class="historyIcon" data-toggle="tooltip" title="Ice-Axe" src="{{ url_for('static', filename='images/icons/piolet.png') }}" alt="Piolet"></th>
+            <th> <img class="historyIcon" data-toggle="tooltip" title="Helmet" src="{{ url_for('static', filename='images/icons/Helmet.png') }}" alt="Helmet"></th>
+            <th> <img class="historyIcon" data-toggle="tooltip" title="Harness" src="{{ url_for('static', filename='images/icons/harness.png') }}" alt="Harness"></th>
+            <th> <img class="historyIcon" data-toggle="tooltip" title="Gaiters" src="{{ url_for('static', filename='images/icons/gaiters.png') }}" alt="Gaiters"></th>
+            <th> <img class="historyIcon" data-toggle="tooltip" title="Poles" src="{{ url_for('static', filename='images/icons/poles.png') }}" alt="Poles"></th>
+            <th> <img class="historyIcon" data-toggle="tooltip" title="Ice-Climbing Axes" src="{{ url_for('static', filename='images/icons/icePiolet.png') }}" alt="Ice Climbing Tools"></th>
+            <th> <img class="historyIcon" data-toggle="tooltip" title="Ice-Climbing Crampons" src="{{ url_for('static', filename='images/icons/crampons.jpg') }}" alt="Ice Climbing Crampons"></th>
+            <th> <img class="historyIcon" data-toggle="tooltip" title="Alpinism Backpack" src="{{ url_for('static', filename='images/icons/backpack.png') }}" alt="Backpack"></th>
+            <th> <img class="historyIcon" data-toggle="tooltip" title="Climbing Shoes" src="{{ url_for('static', filename='images/icons/cShoes.png') }}" alt="Climbing Shoes"></th>
+            <th> <img class="historyIcon" data-toggle="tooltip" title="Kid's Climbing Shoes" src="{{ url_for('static', filename='images/icons/cShoes.png') }}" alt="Kids Climbing Shoes"></th>
+            <th> <img class="historyIcon" data-toggle="tooltip" title="Shock Absorber" src="{{ url_for('static', filename='images/icons/shock.png') }}" alt="Via Ferrata Shock Absorber"></th>
+            <th> <img class="historyIcon" data-toggle="tooltip" title="Crashpad" src="{{ url_for('static', filename='images/icons/crashpad.jpg') }}" alt="Crashpad"></th>
+            <th> <img class="historyIcon" data-toggle="tooltip" title="Slackline" src="{{ url_for('static', filename='images/icons/slackline.png') }}" alt="Slackline"></th>
+            <th> <img class="historyIcon" data-toggle="tooltip" title="Hiking Shoes" src="{{ url_for('static', filename='images/icons/hikingshoes.png') }}" alt="Hiking Shoes"></th>
+            <th> <img class="historyIcon" data-toggle="tooltip" title="Stroller" src="{{ url_for('static', filename='images/icons/stroller.png') }}" alt="Stroller"></th>
+            <th> <img class="historyIcon" data-toggle="tooltip" title="Baby Carrier" src="{{ url_for('static', filename='images/icons/babybag.png') }}" alt="Baby Carrier"></th>
+            <th> <img class="historyIcon" data-toggle="tooltip" title="Total" src="{{ url_for('static', filename='images/icons/euro.png') }}" alt="Total"></th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for r in resauni %}
+        <tr>
+            <td>{{r.name}}</td>
+
+            {% if r.mbPack %}
+                <td style="background-color: rgba(34,155,101,0.5)"><i class="fa fa-check fa-lg"></td>
+                <td></td>
+                <td></td>
+                <td style="background-color: rgba(34,155,101,0.5)"><i class="fa fa-check fa-lg"></td>
+                <td style="background-color: rgba(34,155,101,0.5)">{{r.alpBootSize}}</td>
+                <td style="background-color: rgba(34,155,101,0.5)"><i class="fa fa-check fa-lg"></td>
+                <td style="background-color: rgba(34,155,101,0.5)"><i class="fa fa-check fa-lg"></td>
+                <td style="background-color: rgba(34,155,101,0.5)"><i class="fa fa-check fa-lg"></td>
+                <td style="background-color: rgba(34,155,101,0.5)"><i class="fa fa-check fa-lg"></td>
+
+                {% if r.gaiters %}
+                <td><i class="fa fa-check fa-lg"></i></td>
+                {% else %}
+                <td></td>
+                {% endif %}
+
+                {% if r.poles %}
+                <td><i class="fa fa-check fa-lg"></td>
+                {% else %}
+                <td></td>
+                {% endif %}
+
+                {% if r.techIceAxes %}
+                <td><i class="fa fa-check fa-lg"></td>
+                {% else %}
+                <td></td>
+                {% endif %}
+
+                {% if r.iceCrampon %}
+                <td><i class="fa fa-check fa-lg"></td>
+                {% else %}
+                <td></td>
+                {% endif %}
+
+                {% if r.backpack %}
+                <td><i class="fa fa-check fa-lg"></td>
+                {% else %}
+                <td></td>
+                {% endif %}
+
+                {% if r.climbingShoes %}
+                <td><i class="fa fa-check fa-lg"></td>
+                {% else %}
+                <td></td>
+                {% endif %}
+
+                {% if r.kidClimbingShoes %}
+                <td><i class="fa fa-check fa-lg"></td>
+                {% else %}
+                <td></td>
+                {% endif %}
+
+                {% if r.viaFerrataShock %}
+                <td><i class="fa fa-check fa-lg"></td>
+                {% else %}
+                <td></td>
+                {% endif %}
+
+                {% if r.crashpad %}
+                <td><i class="fa fa-check fa-lg"></td>
+                {% else %}
+                <td></td>
+                {% endif %}
+
+                {% if r.slackline %}
+                <td><i class="fa fa-check fa-lg"></td>
+                {% else %}
+                <td></td>
+                {% endif %}
+
+                {% if r.hikingShoes %}
+                <td><i class="fa fa-check fa-lg"></td>
+                {% else %}
+                <td></td>
+                {% endif %}
+
+                {% if r.babyCarrier %}
+                <td><i class="fa fa-check fa-lg"></td>
+                {% else %}
+                <td></td>
+                {% endif %}
+
+                {% if r.stroller %}
+                <td><i class="fa fa-check fa-lg"></td>
+                {% else %}
+                <td></td>
+                {% endif %}
+
+
+                <td>{{r.price}}€</td>
+
+            {% elif r.gaillandKit %}
+                <td></td>
+                <td style="background-color: rgba(34,155,101,0.5)"><i class="fa fa-check fa-lg"></td>
+                <td></td>
+
+                {% if r.alpBoots %}
+                <td><i class="fa fa-check fa-lg"></td>
+                <td>{{r.alpBootSize}}</td>
+                {% else %}
+                <td></td>
+                <td></td>
+                {% endif %}
+
+                {% if r.crampons %}
+                <td><i class="fa fa-check fa-lg"></td>
+                {% else %}
+                <td></td>
+                {% endif %}
+                
+                {% if r.iceAxe %}
+                <td><i class="fa fa-check fa-lg"></td>
+                {% else %}
+                <td></td>
+                {% endif %}
+
+                <td style="background-color: rgba(34,155,101,0.5)"><i class="fa fa-check fa-lg"></td>
+                <td style="background-color: rgba(34,155,101,0.5)"><i class="fa fa-check fa-lg"></td>
+
+                {% if r.gaiters %}
+                <td><i class="fa fa-check fa-lg"></td>
+                {% else %}
+                <td></td>
+                {% endif %}
+                
+                {% if r.poles %}
+                <td><i class="fa fa-check fa-lg"></td>
+                {% else %}
+                <td></td>
+                {% endif %}
+                
+                {% if r.techIceAxes %}
+                <td><i class="fa fa-check fa-lg"></td>
+                {% else %}
+                <td></td>
+                {% endif %}
+
+                {% if r.iceCrampon %}
+                <td><i class="fa fa-check fa-lg"></td>
+                {% else %}
+                <td></td>
+                {% endif %}
+
+                {% if r.backpack %}
+                <td><i class="fa fa-check fa-lg"></td>
+                {% else %}
+                <td></td>
+                {% endif %}
+
+                {% if r.climbingShoes %}
+                <td><i class="fa fa-check fa-lg"></td>
+                {% else %}
+                <td></td>
+                {% endif %}
+
+                <td style="background-color: rgba(34,155,101,0.5)"><i class="fa fa-check fa-lg"></td>
+
+                {% if r.viaFerrataShock %}
+                <td><i class="fa fa-check fa-lg"></td>
+                {% else %}
+                <td></td>
+                {% endif %}
+
+                {% if r.crashpad %}
+                <td><i class="fa fa-check fa-lg"></td>
+                {% else %}
+                <td></td>
+                {% endif %}
+
+                {% if r.slackline %}
+                <td><i class="fa fa-check fa-lg"></td>
+                {% else %}
+                <td></td>
+                {% endif %}
+
+                {% if r.hikingShoes %}
+                <td><i class="fa fa-check fa-lg"></td>
+                {% else %}
+                <td></td>
+                {% endif %}
+
+                {% if r.babyCarrier %}
+                <td><i class="fa fa-check fa-lg"></td>
+                {% else %}
+                <td></td>
+                {% endif %}
+
+                {% if r.stroller %}
+                <td><i class="fa fa-check fa-lg"></td>
+                {% else %}
+                <td></td>
+                {% endif %}
+
+                <td>{{r.price}}€</td>
+
+            {% elif r.viaFerrataKit %}
+                
+                <td></td>
+                <td></td>
+                <td style="background-color: rgba(34,155,101,0.5)"><i class="fa fa-check fa-lg"></td>
+
+                {% if r.alpBoots %}
+                <td><i class="fa fa-check fa-lg"></td>
+                <td>{{r.alpBootSize}}</td>
+                {% else %}
+                <td></td>
+                <td></td>
+                {% endif %}
+
+                {% if r.crampons %}
+                <td><i class="fa fa-check fa-lg"></td>
+                {% else %}
+                <td></td>
+                {% endif %}
+                
+                {% if r.iceAxe %}
+                <td><i class="fa fa-check fa-lg"></td>
+                {% else %}
+                <td></td>
+                {% endif %}
+
+                <td style="background-color: rgba(34,155,101,0.5)"><i class="fa fa-check fa-lg"></td>
+                <td style="background-color: rgba(34,155,101,0.5)"><i class="fa fa-check fa-lg"></td>
+
+                {% if r.gaiters %}
+                <td><i class="fa fa-check fa-lg"></td>
+                {% else %}
+                <td></td>
+                {% endif %}
+                
+                {% if r.poles %}
+                <td><i class="fa fa-check fa-lg"></td>
+                {% else %}
+                <td></td>
+                {% endif %}
+                
+                {% if r.techIceAxes %}
+                <td><i class="fa fa-check fa-lg"></td>
+                {% else %}
+                <td></td>
+                {% endif %}
+
+                {% if r.iceCrampon %}
+                <td><i class="fa fa-check fa-lg"></td>
+                {% else %}
+                <td></td>
+                {% endif %}
+
+                {% if r.backpack %}
+                <td><i class="fa fa-check fa-lg"></td>
+                {% else %}
+                <td></td>
+                {% endif %}
+
+                {% if r.climbingShoes %}
+                <td><i class="fa fa-check fa-lg"></td>
+                {% else %}
+                <td></td>
+                {% endif %}
+                    
+                {% if r.kidClimbingShoes %}
+                <td><i class="fa fa-check fa-lg"></td>
+                {% else %}
+                <td></td>
+                {% endif %}
+
+                <td style="background-color: rgba(34,155,101,0.5)"><i class="fa fa-check fa-lg"></td>
+
+                {% if r.crashpad %}
+                <td><i class="fa fa-check fa-lg"></td>
+                {% else %}
+                <td>--</td>
+                {% endif %}
+
+                {% if r.slackline %}
+                <td><i class="fa fa-check fa-lg"></td>
+                {% else %}
+                <td></td>
+                {% endif %}
+
+                {% if r.hikingShoes %}
+                <td><i class="fa fa-check fa-lg"></td>
+                {% else %}
+                <td></td>
+                {% endif %}
+
+                {% if r.babyCarrier %}
+                <td><i class="fa fa-check fa-lg"></td>
+                {% else %}
+                <td></td>
+                {% endif %}
+
+                {% if r.stroller %}
+                <td><i class="fa fa-check fa-lg"></td>
+                {% else %}
+                <td></td>
+                {% endif %}
+
+
+                <td>{{r.price}}€</td>
+            
+            {% else %}
+
+                <td></td>
+                <td></td>
+                <td></td>
+
+                {% if r.alpBoots %}
+                <td><i class="fa fa-check fa-lg"></td>
+                <td>{{r.alpBootSize}}</td>
+                {% else %}
+                <td></td>
+                <td></td>
+                {% endif %}
+
+                {% if r.crampons %}
+                <td><i class="fa fa-check fa-lg"></td>
+                {% else %}
+                <td></td>
+                {% endif %}
+                
+                {% if r.iceAxe %}
+                <td><i class="fa fa-check fa-lg"></td>
+                {% else %}
+                <td></td>
+                {% endif %}
+                
+                {% if r.helmet %}
+                <td><i class="fa fa-check fa-lg"></td>
+                {% else %}
+                <td></td>
+                {% endif %}
+                
+                {% if r.harness %}
+                <td><i class="fa fa-check fa-lg"></td>
+                {% else %}
+                <td></td>
+                {% endif %}
+                
+                {% if r.gaiters %}
+                <td><i class="fa fa-check fa-lg"></td>
+                {% else %}
+                <td></td>
+                {% endif %}
+                
+                {% if r.poles %}
+                <td><i class="fa fa-check fa-lg"></td>
+                {% else %}
+                <td></td>
+                {% endif %}
+                
+                {% if r.techIceAxes %}
+                <td><i class="fa fa-check fa-lg"></td>
+                {% else %}
+                <td></td>
+                {% endif %}
+
+                {% if r.iceCrampon %}
+                <td><i class="fa fa-check fa-lg"></td>
+                {% else %}
+                <td></td>
+                {% endif %}
+
+                {% if r.backpack %}
+                <td><i class="fa fa-check fa-lg"></td>
+                {% else %}
+                <td></td>
+                {% endif %}
+
+                {% if r.climbingShoes %}
+                <td><i class="fa fa-check fa-lg"></td>
+                {% else %}
+                <td></td>
+                {% endif %}
+
+                {% if r.kidClimbingShoes %}
+                <td><i class="fa fa-check fa-lg"></td>
+                {% else %}
+                <td></td>
+                {% endif %}
+
+                {% if r.viaFerrataShock %}
+                <td><i class="fa fa-check fa-lg"></td>
+                {% else %}
+                <td></td>
+                {% endif %}
+
+                {% if r.crashpad %}
+                <td><i class="fa fa-check fa-lg"></td>
+                {% else %}
+                <td></td>
+                {% endif %}
+
+                {% if r.slackline %}
+                <td><i class="fa fa-check fa-lg"></td>
+                {% else %}
+                <td></td>
+                {% endif %}
+
+                {% if r.hikingShoes %}
+                <td><i class="fa fa-check fa-lg"></td>
+                {% else %}
+                <td></td>
+                {% endif %}
+
+                {% if r.babyCarrier %}
+                <td><i class="fa fa-check fa-lg"></td>
+                {% else %}
+                <td></td>
+                {% endif %}
+
+                {% if r.stroller %}
+                <td><i class="fa fa-check fa-lg"></td>
+                {% else %}
+                <td></td>
+                {% endif %}
+                
+                <td>{{r.price}}€</td>
+            
+            {% endif %}
+
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+</div>
+</div>
+
+<div class="container">
+<div class="jumbotron" style="background-color: rgba(0,0,0,0.6)">
+
+<a href="/history">Back</a>
+
+</div>
+</div>
+
+
+
+
+{% endblock %}  
