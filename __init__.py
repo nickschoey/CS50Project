@@ -62,19 +62,13 @@ def send_mail(id):
 @app.route('/send', methods=['GET', 'POST'])
 def send():
 	if request.method == 'POST':
-		#telephone = request.form['telephone']
 		dates = request.form['datefilter']
-		#people = request.form['people']
 		startDate = request.form['startDate']
 		endDate = request.form['endDate']
 		days = request.form['days']
 		user_id = session['user_id']
 		now = datetime.now(pytz.timezone('Europe/Amsterdam'))
 		c, conn = connection()
-		#c.execute (""" UPDATE user
-   		#			   	SET telephone=%s
-   		#			   	WHERE user_id=%s""",
-   		#				([thwart(telephone)], session['user_id']))
    		
 		
 
