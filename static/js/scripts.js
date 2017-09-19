@@ -209,6 +209,9 @@ $(document).ready(function() {
 
   $('[data-toggle="tooltip"]').tooltip();
 
+
+
+
   var table = $('#userList').DataTable( {
     "ajax": {
       "url": "http://188.226.149.94/getUserList/",
@@ -221,23 +224,40 @@ $(document).ready(function() {
         { "data": "fullname"},
         { "data": "telephone"},
         { "data": "email"},
-        { }
+        {}
 
         ],
+    "columnDefs": [{
+      "targets": -1,
+      "data": null,
+      "defaultContent": "<button class='btn btn-success' style='display: none'>Select</button>"
 
-    "columnDefs": [ {
-        "targets": -1,
-        "data": null,
-        "defaultContent": "<button>Click!</button>"
-    }],
+          }]
+
 
   });
 
-  $('#userList tbody').on('click', 'button', function() {
-    var data = table.row( $(this).parents('tr')).data();
-    alert("User ID #" + data.user_id + " name's is "+data.fullname);
+  $('#userList tbody').on('click', 'tr', function() {
+    var data = table.row( $(this)).data();
+    $('.table tr td button').fadeIn();
+    if ($(this).hasClass('selected')) {
+      $(this).removeClass('selected');
+    } else {
+      table.$('tr.selected').removeClass('selected');
+      $(this).addClass('selected');
+      $('#idUser').val(data.user_id);
+      $('#nameUser').val(data.fullname);
+    };
+
+    //$('#selectUser').hide();
+    //$('#jumboResaDatesAdmin').fadeIn();
+    //$('#pickDate').show();
   });
 
+  $('#nextButton').on('click', function() {
+    $('#selectUser').hide();
+    $('#jumboResaDatesAdmin').fadeIn();  
+    });
 
 //Sorts the history in descending order depending on when the reservation was created
   $('#history').DataTable( {

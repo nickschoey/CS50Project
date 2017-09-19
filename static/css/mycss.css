@@ -18,8 +18,19 @@ th.rotate > div > span {
 }
 
 
+.table > thead > tr > th, .table > tbody > tr > th, .table > tfoot > tr > th,
+.table > thead > tr > td, .table > tbody > tr > td, .table > tfoot > tr > td {
+  border-top: 0px;
+}
 
+.table-hover tbody tr:hover td, .table-hover tbody tr:hover th {
+  background-color: rgba(23,82,188,0.3);
+}
 
+tr.even.selected, tr.odd.selected {
+  background-color: rgba(23,82,188,0.6);
+  font-weight: bold;
+}
 
 
 .jumbotron {

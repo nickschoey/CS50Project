@@ -14,21 +14,93 @@ style= "background-color: #000000; background-image: url('../static/images/splas
 {% block main %}
 
 <div class="container">
-<div class="jumbotron" style="padding-left: 10px; padding-right: 10px">
-	<table id="userList" class="display" width="100%" style="color: white">
+<div class="jumbotron"  id="selectUser" style="padding-left: 10px; padding-right: 10px">
+<div class="row" style="color: white; text-align: center">
+		<h1> Select User</h1>
+</div>
+<div class="row">
+	<div class="col-sm-2"></div>
+	<div class="col-sm-8">
+
+		
+	</div>
+	<div class="col-sm-2"></div>
+</div>
+<div class="row">
+	<table id="userList" class="table table-hover"  width="100%" style="color: white">
 		<thead>
 			<th>ID</th>
 			<th>Username</th>
 			<th>Full Name</th>
 			<th>Telephone</th>
 			<th>Email</th>
-			<th>Select</th>
+			<th></th>
 		</thead>
 
-
 	</table>
+</div>
+	<div class="col-sm-2"></div>
+		<button type="button" class="btn btn-success btn-lg" id="nextButton">Select User</button>
+	</div>
+	<div class="col-sm-2"></div>
 
 </div>
 </div>
+
+<div class="container text-center" id="jumboResaDatesAdmin" style="display: none;">
+	
+	<div class="col-sm-2">
+  	</div>
+	<div class="col-sm-8">
+  		<form method="POST" action="/userList/"> 
+		<div class="jumbotron">
+		<div class="row" style="color: white; text-align: center">
+		<h1> New Reservation</h1>
+		</div>
+			<div class="row">
+  			<div class="form-group">
+  				<div class="col-sm-2">
+	  				<label for="idUser" style="color: white; ">User ID </label>
+					<input type="text" style="background-color: rgba(144, 68, 68, 0.26);color: white; text-align: center;" 
+					name="idUser" id="idUser" placeholder="ID" class="form-control input-lg" readonly>
+  				</div>
+  				<div class="col-sm-8">
+	  				<label for="nameUser" style="color: white">Fullname </label>
+					<input type="text" name="nameUser" style="width: 80%;background-color: rgba(144, 68, 68, 0.26); color: white"
+					 id="nameUser" placeholder="Full Name" class="form-control input-lg" readonly>
+  				</div>
+			</div>
+			</div>
+  			
+  			<div class="row" style="margin-top: 10px">
+	  		<div class="form-group">
+			    <div class="input-group input-group-lg" id="pickDate">
+			     <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
+			     <input type="text" name="datefilter" class="form-control" value="{{request.form.dates}}" placeholder="Please select your dates" readonly width=50% style="background-color: white">
+			    </div>
+			    <div class="alert alert-success" id="pInfo" style="display: none; margin-top: 5px">
+			    </div>
+			</div>
+			</div>
+				<div id="goGear" style="display: none">
+				<input type="submit" class="btn btn-lg btn-success" value="Pick gear" >
+				</div>
+				<div id="backDash" style="margin-top: 10px">
+				<a href="{{ url_for('userList') }}" type="button" class="btn btn-danger btn-lg" id="backButton">Back</a>
+				</div>
+			</div>
+			<input type="text" name="startDate" id="startDate" class="form-control" value="{{request.form.startDate}}"  style="display: none" readonly >
+  			<input type="text" name="endDate" id="endDate" class="form-control" value="{{request.form.endDate}}"   style="display: none" readonly >
+  			<input type="text" name="days" id="days" class="form-control" value="{{request.form.days}}"   style="display: none" readonly ">
+
+		</form>
+
+	</div>
+	<div class="col-sm-2">
+  	</div>
+</div>
+
+
+
 
 {% endblock %} 

@@ -655,6 +655,30 @@ def userList():
 		elif request.method == 'GET':
 			return render_template("userList.html")
 	
+		elif request.method == 'POST':
+			
+			session['user_id'] = request.form['idUser']
+			dates = request.form['datefilter']
+			startDate = request.form['startDate']
+			endDate = request.form['endDate']
+			days = request.form['days']
+			user_id = session['user_id']
+			now = datetime.now(pytz.timezone('Europe/Amsterdam'))
+			c, conn = connection()
+
+			c.execute("""INSERT INTO resa 
+						 (user_id, creationdate, dates, datestart, dateend, days, people, status, total) 
+						 VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s)""",
+						 (session['user_id'], now.strftime("%y-%m-%d %H:%M:%S"), dates, startDate, endDate, days, 1, 0, 0))
+
+			conn.commit()
+			c.close()
+			conn.close()
+			gc.collect()
+			
+			return redirect(url_for("gearAdmin"))
+
+
 	except Exception as e:
 		return("Whoops" + str(e))
 
